@@ -10,7 +10,7 @@ var ProjectControllerExample = require('./controllers/projectControllerExample')
 ////////// CONTROLERS WEDDINGCLOUD//////
 
 var ProjectControllerinvitados = require('./controllers/projectControllerInvitados');
-
+var ProjectControllerAdmin = require('./controllers/projectControllerAdmin2');
 
 
 
@@ -50,7 +50,13 @@ app.get('/invitados/get', ProjectControllerinvitados.getInvitados);
 app.post('/invitados/post', ProjectControllerinvitados.postInvitados);
 app.post('/invitados/delete', ProjectControllerinvitados.deleteInvitados);
 app.post('/invitados/update', ProjectControllerinvitados.invitadoUpdate);
-
+app.get('/admin/preboda', ProjectControllerAdmin.getPreboda);
+app.get('/admin/confirmados', ProjectControllerAdmin.getConfirmados);
+app.get('/admin/alergias', ProjectControllerAdmin.getAlergia);
+app.get('/admin/noviofamilia', ProjectControllerAdmin.getNovioFamilia);
+app.get('/admin/noviafamilia', ProjectControllerAdmin.getNoviaFamilia);
+app.get('/admin/novioAmigos', ProjectControllerAdmin.getNovioAmigos);
+app.get('/admin/noviaAmigos', ProjectControllerAdmin.getNoviaAmigos);
 
 // app.get('/galeria/get', ProjectControllerGaleria.getFotos);
 
