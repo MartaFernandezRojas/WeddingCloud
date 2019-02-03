@@ -1,2 +1,0 @@
-# WeddingCloud
-Proyecto Final
