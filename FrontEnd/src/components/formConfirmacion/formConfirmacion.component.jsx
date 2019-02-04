@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 //Import Stilos
+import styles2 from './formConfirmacion.styles.css';
 import styles from '../../routes/router/router.styles.css';
 
 ///////////// Component ////////////////
@@ -40,7 +41,7 @@ export class FormularioConfirmacion extends Component {
   render() {
     return (
         <div>
-        <h5>Registro de Invitado</h5>
+        <h5>Registro de Invitados</h5>
         <form >
           <label >ID Boda:</label>
           <input className="form-control" id="id_boda" type="text" name="boda" placeholder="ID Boda" value={this.state.id_boda} onChange={this.handleChange} />
