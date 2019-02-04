@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 // Import global resources
 import { logo2 } from '../../assets';
-import { Text, Galeria, Formulario } from '../../components';
+import { Text, Galeria, Formulario, LogIn } from '../../components';
 
 // Import local resources
 import styles from './router.styles.css';
@@ -33,7 +33,8 @@ export class Router extends Component {
         <div className={styles.subContainer}>
         <Formulario/>
         <hr className={styles.linea}/>
-        <Formulario/>
+        <LogIn/>
+        {/* <Formulario/> */}
           {/* <a onClick={this.handdleStore} className={styles.button}>
             Ver el Store
           </a>
