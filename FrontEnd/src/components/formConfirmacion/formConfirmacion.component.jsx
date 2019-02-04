@@ -2,15 +2,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+//Import Stilos
 import styles from '../../routes/router/router.styles.css';
-import stylesform from './formulario.styles.css';
-// Import global resources
-
-// Import local resources
-// import styles from './galeria.styles.css';
-
-//import componenet react-materialize
-// import {Button} from 'react-materialize';
 
 ///////////// Component ////////////////
 export class FormularioConfirmacion extends Component {
@@ -46,7 +39,7 @@ export class FormularioConfirmacion extends Component {
   }
   render() {
     return (
-      <div>
+        <div>
         <h5>Registro de Invitado</h5>
         <form >
           <label >ID Boda:</label>
