@@ -17,6 +17,7 @@ var ProjectControllerAdmin = require('./controllers/projectControllerAdmin2');
 var app = require('./app');
 var multipart = require('connect-multiparty');
 var multipartMiddleware = multipart({ uploadDir: './public/img' });
+const jwt = require('jsonwebtoken');
 
 app.get('/galeria', function (req, res) {
     res.render('galeria');
@@ -46,7 +47,7 @@ app.get('/todo', auth, function (req, res) {
 ////////////////////////WEDDINGCLOUD////////////////////
 
 
-app.get('/invitados/get', ProjectControllerinvitados.getInvitados);
+app.get('/invitados/get',veryfyToken, ProjectControllerinvitados.getInvitados);
 app.post('/invitados/post', ProjectControllerinvitados.postInvitados);
 app.post('/invitados/delete', ProjectControllerinvitados.deleteInvitados);
 app.post('/invitados/update', ProjectControllerinvitados.invitadoUpdate);
@@ -60,6 +61,18 @@ app.get('/admin/noviofamilia', ProjectControllerAdmin.getNovioFamilia);
 app.get('/admin/noviafamilia', ProjectControllerAdmin.getNoviaFamilia);
 app.get('/admin/novioAmigos', ProjectControllerAdmin.getNovioAmigos);
 app.get('/admin/noviaAmigos', ProjectControllerAdmin.getNoviaAmigos);
+
+function veryfyToken(req,res,next){
+    const bearerHeader = req.headers['authorization'];
+    if(typeof bearerHeader != 'undefined' ){
+        const bearer = bearerHeader.split(' ');
+        const bearerToken= bearer[1];
+        req.token=bearerToken;
+        next();
+    }else{
+        res.sendStatus(403);
+    }
+}
 
 // app.get('/galeria/get', ProjectControllerGaleria.getFotos);
 

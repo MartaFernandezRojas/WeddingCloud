@@ -1,5 +1,6 @@
 var con = require('../config');
 var bcrypt = require('bcrypt-nodejs');
+const jwt = require('jsonwebtoken');
 
 var controller = {
     loginUser: function (req, res) {
@@ -28,9 +29,13 @@ var controller = {
                 };
             };
         });
+        jwt.sign(`${req}`, 'secretkey', (err, token) => {
+            res.json({
+                token
+            });
+        });
 
     }
-
 };
 
-module.exports = controller;
+    module.exports = controller;
