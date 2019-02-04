@@ -19,8 +19,12 @@ var controller = {
                             return res.send(err)
                         } else {
                             if (iguales) {
-                                return res.send(result[0]);
-                                console.log('ok')
+                                jwt.sign(req.body, 'secretkey', (err, token) => {
+                                    res.json({
+                                        token,
+                                        ...result[0]
+                                    });
+                                });
                             } else {
                                 return res.send('La contraseña no es correcta')
                             };
@@ -29,11 +33,7 @@ var controller = {
                 };
             };
         });
-        jwt.sign(`${req}`, 'secretkey', (err, token) => {
-            res.json({
-                token
-            });
-        });
+        
 
     }
 };
