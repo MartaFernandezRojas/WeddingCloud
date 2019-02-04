@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 // Import global resources
 import { logo2 } from '../../assets';
 import { Text, Galeria, Formulario, LogIn } from '../../components';
+import { Switch, Route, Link } from 'react-router-dom';
 
 // Import local resources
 import styles from './router.styles.css';
@@ -31,22 +32,10 @@ export class Router extends Component {
         <img src={logo2} className={styles.image} />
         <h1 className={styles.title}>Wedding Cloud</h1>
         <div className={styles.subContainer}>
-        <Formulario/>
-        <hr className={styles.linea}/>
-        <LogIn/>
-        {/* <Formulario/> */}
-          {/* <a onClick={this.handdleStore} className={styles.button}>
-            Ver el Store
-          </a>
-          <a onClick={this.handdleDispatch} className={styles.button}>
-            Lanzar Acción
-          </a> */}
+          <Formulario />
+          <hr className={styles.linea} />
+          <LogIn />
         </div>
-        {/* <div className={styles.text}>
-          <Text />
-        </div>
-        <Galeria/> */}
-        {/* {products.map((i) => <Galeria key={i.id} data={i} />)} */}
       </div>
     );
   }
