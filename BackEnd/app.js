@@ -26,6 +26,13 @@ app.get('/test2', function (req, res) {
 });
 
 console.log(__dirname);
+//CORS MIDDLEWARE
+
+app.use(function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+    next();
+   });
 
 //creacion del servidor
 app.listen(port, () => {
