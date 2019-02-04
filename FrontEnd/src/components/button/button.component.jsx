@@ -1,5 +1,5 @@
 // Import libraries
-import React, { Component } from 'react';
+import React, { Component } from  'react';
 
 // Import global resources
 

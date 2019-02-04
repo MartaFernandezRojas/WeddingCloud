@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from  'react';
 import { render } from 'react-dom';
 import { hot } from 'react-hot-loader';
 
-import { Router } from '@Routes';
+import { Router } from './routes';
 
 const HotReload = hot(module)(Router);
 const rootTag = document.getElementById('root');

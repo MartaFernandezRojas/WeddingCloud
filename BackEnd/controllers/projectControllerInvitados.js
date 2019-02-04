@@ -2,7 +2,7 @@ var con = require('../config');
 
     var controller = {
         getInvitados: function (req, res) {
-            let sql = 'SELECT * from invitados';
+            let sql = `SELECT * from invitados where id_boda = ${req.body.id_boda}`;
             con.query(sql, function (err, result) {
                 if (err) {
                     return res.send(err);
@@ -13,7 +13,7 @@ var con = require('../config');
         },
 
         postInvitados: function (req, res) {
-            let sql = `INSERT INTO invitados (nombre,apellido,email,password,rol) VALUES ('${req.body.nombre}','${req.body.apellido}','${req.body.email}','${req.body.password}','${req.body.rol}')`;
+            let sql = `INSERT INTO invitados (nombre,apellido,email,password,rol,id_boda) VALUES ('${req.body.nombre}','${req.body.apellido}','${req.body.email}','${req.body.password}','${req.body.rol}','${req.body.id_boda}')`;
             con.query(sql, function (err, result) {
                 if (err) {
                     return res.send(err);
@@ -25,14 +25,15 @@ var con = require('../config');
                         apellido: req.body.apellido,
                         email:req.body.email,
                         password:req.body.password,
-                        rol:req.body.rol
+                        rol:req.body.rol,
+                        id_boda:req.body.id_boda
                     }
                      return res.send(invitado);
                 }
             });
         },
         invitadoUpdate: function (req, res) {
-            let sql = `UPDATE invitados set nombre='${req.body.nombre}',Apellido='${req.body.apellido}',email='${req.body.email}',password='${req.body.password}',id_alergia='${req.body.id_alergia}', confirmacion='${req.body.confirmacion}',parte='${req.body.parte}',familia='${req.body.familia}', fiestapreboda='${req.body.fiestapreboda}',comentarios='${req.body.comentarios}' where id = ${req.body.id}`;
+            let sql = `UPDATE invitados set nombre='${req.body.nombre}',apellido='${req.body.apellido}',email='${req.body.email}',password='${req.body.password}',id_alergia='${req.body.id_alergia}', confirmacion='${req.body.confirmacion}',parte='${req.body.parte}',familia='${req.body.familia}', fiestapreboda='${req.body.fiestapreboda}',comentarios='${req.body.comentarios}' where id = ${req.body.id}`;
             con.query(sql, function (err, result) {
                 if (err) {
                     res.send(err);
@@ -40,7 +41,7 @@ var con = require('../config');
                     let invitado = {
                         id: result.insertId,
                         nombre: req.body.nombre,
-                        Apellido: req.body.apellido,
+                        apellido: req.body.apellido,
                         email: req.body.email,
                         password: req.body.password,
                         id_alergia: req.body.id_alergia,
@@ -66,6 +67,5 @@ var con = require('../config');
             });
         },
     };
-
 
     module.exports = controller; 

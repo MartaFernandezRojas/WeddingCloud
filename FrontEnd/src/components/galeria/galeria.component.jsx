@@ -1,7 +1,6 @@
 // Import libraries
 import React, { Component } from 'react';
 import axios from 'axios';
-
 // Import global resources
 
 // Import local resources
