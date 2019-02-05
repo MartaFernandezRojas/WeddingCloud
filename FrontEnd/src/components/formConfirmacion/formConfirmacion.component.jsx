@@ -13,14 +13,33 @@ export class FormularioConfirmacion extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id_boda: 1,
-      id:1
-
+      confirmacion:null,
     };
     this.handleChange = this.handleChange.bind(this);
   }
   show() {
     // console.log(this.state);
+  }
+
+  insertUser() {
+    if(this.state.confirmacion=='si'){
+      this.state.confirmacion=true;
+    }else{
+      this.state.confirmacion=false;
+    }
+
+    // console.log(document.getElementById(confirmacion).value);
+    let user = {
+      nombre: this.state.nombre,
+      apellido: this.state.apellido,
+      email: this.state.email,
+      confirmacion:this.state.confirmacion
+    }
+    console.log(user);
+    axios.post('http://localhost:3000/invitados/update', user)
+      .then(response => {
+        
+      })
   }
 
   handleChange(event) {
@@ -31,47 +50,40 @@ export class FormularioConfirmacion extends Component {
   componentDidMount() {
     var invitado = JSON.parse(localStorage.getItem("invitado"));
     this.setState(invitado);
-    console.log(this.state);
-    console.log(invitado.id);
-    axios.get('http://localhost:3000/invitados/getMofificar',{params: {idb:invitado.id_boda, id: invitado.id}})
+    axios.get('http://localhost:3000/invitados/getMofificar', { params: { idb: invitado.id_boda, id: invitado.id } })
       .then(response => {
         this.setState(response.data[0])
-        // let invitados = []
-        // response.data.forEach(i => {
-        //   invitados.push(i)
-        // });
-        // this.setState({invitados: invitados})
       })
   }
   render() {
     return (
       <div>
-        <h4>Bienvenida {this.state.nombre} {this.state.apellido}</h4>
+        <h4>Bienvenid@ {this.state.nombre} {this.state.apellido}</h4>
         <h5>Rellena el formulario de confirmación</h5>
         <form >
           <label form="nombre">Nombre</label>
-          <input className="form-control" id="nombre" type="text" name="nombre" placeholder={this.state.invitados?this.state.invitados.nombre:'null'} value={this.state.nombre} onChange={this.handleChange} />
+          <input className="form-control" id="nombre" type="text" name="nombre" placeholder={this.state.invitados ? this.state.invitados.nombre : 'null'} value={this.state.nombre} onChange={this.handleChange} />
           <label form="apellido">Apellido:</label>
-          <input className="form-control" id="apellido" type="text" name="apellido" placeholder={this.state.invitados?this.state.invitados.apellido:'null'} value={this.state.apellido} onChange={this.handleChange} />
+          <input className="form-control" id="apellido" type="text" name="apellido" placeholder={this.state.invitados ? this.state.invitados.apellido : 'null'} value={this.state.apellido} onChange={this.handleChange} />
           <label form="email">Email:</label>
-          <input className="form-control validate" id="email" type="email" name="Email" placeholder={this.state.invitados?this.state.invitados.email:'null'} value={this.state.email} onChange={this.handleChange} />
+          <input className="form-control validate" id="email" type="email" name="Email" placeholder={this.state.invitados ? this.state.invitados.email : 'null'} value={this.state.email} onChange={this.handleChange} />
 
           <p>Confirmación de asistencia:</p>
           <label>
-            <input className="form-control validate" name="confirmacion" id="confirmacion" type="radio" value={this.state.email} onChange={this.handleChange} />
+            <input className="form-control validate" name="confirmacion" id="confirmacion"checked={this.state.confirmacion === 'si'}  type="radio" value='si' onChange={this.handleChange} />
             <span>Si puedo</span>
           </label>
           <label>
-            <input className="form-control validate" name="confirmacion" id="confirmacion" type="radio" value={this.state.confirmacion} onChange={this.handleChange} />
+            <input className="form-control validate" name="confirmacion" id="confirmacion" type="radio" checked={this.state.confirmacion === 'no'}  value='no' onChange={this.handleChange} />
             <span>No puedo</span>
           </label>
           <p>Alergia o intolerancia</p>
           <label>
-            <input className="form-control validate" id="id_alergia" type="radio" name="alergia" value={this.state.id_alergia} onChange={this.handleChange} />
+            <input className="form-control validate" id="id_alergia" type="radio" name="alergia" value='celiaco' onChange={this.handleChange} />
             <span>Celiaco</span>
           </label>
           <label>
-            <input className="form-control validate" id="id_alergia" type="radio" name="alergia" value={this.state.id_alergia} onChange={this.handleChange} />
+            <input className="form-control validate" id="id_alergia" type="radio" name="alergia" value='lactosa' onChange={this.handleChange} />
             <span>Lactosa</span>
           </label>
 
