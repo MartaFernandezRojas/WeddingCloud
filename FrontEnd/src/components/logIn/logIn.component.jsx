@@ -37,8 +37,8 @@ export class LogIn extends Component {
         }
         axios.post('http://localhost:3000/log/logIn', user)
             .then(response => {
-                console.log('insertado')
-                console.log(response);
+                localStorage.setItem('invitado', JSON.stringify(response.data));
+                console.log(JSON.parse(localStorage.getItem("invitado")));
             })
 
     }

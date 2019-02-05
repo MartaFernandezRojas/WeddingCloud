@@ -4,21 +4,36 @@ const jwt = require('jsonwebtoken');
 
 var controller = {
     getInvitados: function (req, res) {
-        jwt.verify(req.token, 'secretkey', (err, authData) => {
+        // jwt.verify(req.token, 'secretkey', (err, authData) => {
+        //     if (err) {
+        //         res.sendStatus(403);
+        //     } else {
+        let sql = `SELECT * from invitados where id_boda = '${req.body.id_boda}'}`;
+        con.query(sql, function (err, result) {
             if (err) {
-                res.sendStatus(403);
+                return res.send(err);
             } else {
-                let sql = `SELECT * from invitados where id_boda = ${req.body.id_boda}`;
-                con.query(sql, function (err, result) {
-                    if (err) {
-                        return res.send(err);
-                    } else {
-                        return res.send(result);
-                    }
-                });
+                return res.send(result);
             }
-        })
+        });
+    },
+    // })ojo que tienes que añadir un corchete!!!!!!!!
 
+    getInvitadosModificar: function (req, res) {
+        // jwt.verify(req.token, 'secretkey', (err, authData) => {
+        //     if (err) {
+        //         res.sendStatus(403);
+        //     } else {
+       
+
+        let sql = `SELECT * from invitados where id_boda = '${req.body.id_boda}' and id='${req.body.id}'`;
+        con.query(sql, function (err, result) {
+            if (err) {
+                return res.send(err);
+            } else {
+                return res.send(result);
+            }
+        });
     },
 
     postInvitados: function (req, res) {
@@ -47,7 +62,7 @@ var controller = {
         });
     },
     invitadoUpdate: function (req, res) {
-        let sql = `UPDATE invitados set nombre='${req.body.nombre}',apellido='${req.body.apellido}',email='${req.body.email}',password='${req.body.password}',id_alergia='${req.body.id_alergia}', confirmacion='${req.body.confirmacion}',parte='${req.body.parte}',familia='${req.body.familia}', fiestapreboda='${req.body.fiestapreboda}',comentarios='${req.body.comentarios}' where id = ${req.body.id}`;
+        let sql = `UPDATE invitados set nombre='${req.body.nombre}',apellido='${req.body.apellido}',email='${req.body.email}',password='${req.body.password}',id_alergia='${req.body.id_alergia}', confirmacion='${req.body.confirmacion}',parte='${req.body.parte}',familia='${req.body.familia}', fiestapreboda='${req.body.fiestapreboda}',comentarios='${req.body.comentarios}' where id = ${req.body.id} and id_boda=${req.body.id_boda}`;
         con.query(sql, function (err, result) {
             if (err) {
                 res.send(err);

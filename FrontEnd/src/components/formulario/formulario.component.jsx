@@ -27,7 +27,7 @@ export class Formulario extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
   show(){
-    console.log(this.state);
+    // console.log(this.state);
   }
 
   handleChange(event) {
@@ -40,7 +40,7 @@ export class Formulario extends Component {
 
       axios.post('http://localhost:3000/invitados/post', this.state)
       .then(response => {
-        console.log('insertado')
+        
       })
   
   }

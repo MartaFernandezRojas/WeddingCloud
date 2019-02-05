@@ -47,7 +47,8 @@ app.get('/todo', auth, function (req, res) {
 ////////////////////////WEDDINGCLOUD////////////////////
 
 
-app.get('/invitados/get',veryfyToken, ProjectControllerinvitados.getInvitados);
+app.get('/invitados/get', ProjectControllerinvitados.getInvitados);
+app.get('/invitados/getMofificar', ProjectControllerinvitados.getInvitadosModificar);
 app.post('/invitados/post', ProjectControllerinvitados.postInvitados);
 app.post('/invitados/delete', ProjectControllerinvitados.deleteInvitados);
 app.post('/invitados/update', ProjectControllerinvitados.invitadoUpdate);
