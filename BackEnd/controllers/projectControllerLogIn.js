@@ -5,7 +5,6 @@ const jwt = require('jsonwebtoken');
 var controller = {
     loginUser: function (req, res) {
         let sql = `SELECT * from invitados where email ='${req.body.email}'`;
-
         con.query(sql, function (err, result) {
             if (err) {
                 return res.send(err);

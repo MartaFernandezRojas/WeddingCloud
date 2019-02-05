@@ -2,8 +2,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-
+import { FormularioConfirmacion } from '../formConfirmacion';
 import styles from '../../routes/router/router.styles.css';
+import { Switch, Redirect, BrowserRouter, } from 'react-router-dom';
 // import stylesform from './formulario.styles.css';
 // Import global resources
 
@@ -19,7 +20,8 @@ export class LogIn extends Component {
         super(props);
         this.state = {
             emailregistro: '',
-            passwordregistro: ''
+            passwordregistro: '',
+            redirect:false
         };
         this.handleChange = this.handleChange.bind(this);
     }
@@ -37,13 +39,15 @@ export class LogIn extends Component {
         }
         axios.post('http://localhost:3000/log/logIn', user)
             .then(response => {
-                localStorage.setItem('invitado', JSON.stringify(response.data));
-                console.log(JSON.parse(localStorage.getItem("invitado")));
+                if (response.status === 200) {
+                    localStorage.setItem('invitado', JSON.stringify(response.data));
+                  this.setState({redirect:true})
+                }
             })
-
     }
     render() {
-        return (
+        const redireccion=this.state.redirect ?   <Redirect from ="/" to="/FormularioConfirmacion" /> : null
+       return (
             <div>
                 <h5>Log In</h5>
                 <form >
@@ -55,7 +59,9 @@ export class LogIn extends Component {
                         this.logInUser();
                     }
                     } className={styles.button} value='Confirmar' />
+                    
                 </form>
+                {redireccion}
             </div>
         );
     }

@@ -25,8 +25,7 @@ var controller = {
         //         res.sendStatus(403);
         //     } else {
        
-
-        let sql = `SELECT * from invitados where id_boda = '${req.body.id_boda}' and id='${req.body.id}'`;
+        let sql = `SELECT * from invitados where id_boda=${req.query.idb} and id=${req.query.id}`;
         con.query(sql, function (err, result) {
             if (err) {
                 return res.send(err);

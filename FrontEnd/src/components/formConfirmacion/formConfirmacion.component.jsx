@@ -6,19 +6,21 @@ import axios from 'axios';
 import styles2 from './formConfirmacion.styles.css';
 import styles from '../../routes/router/router.styles.css';
 
+
+
 ///////////// Component ////////////////
 export class FormularioConfirmacion extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id_boda: 2,
-      id:2
+      id_boda: 1,
+      id:1
 
     };
     this.handleChange = this.handleChange.bind(this);
   }
   show() {
-    console.log(this.state);
+    // console.log(this.state);
   }
 
   handleChange(event) {
@@ -26,12 +28,14 @@ export class FormularioConfirmacion extends Component {
       [event.target.id]: event.target.value
     });
   }
-
   componentDidMount() {
-    axios.get('http://localhost:3000/invitados/getMofificar')
+    var invitado = JSON.parse(localStorage.getItem("invitado"));
+    this.setState(invitado);
+    console.log(this.state);
+    console.log(invitado.id);
+    axios.get('http://localhost:3000/invitados/getMofificar',{params: {idb:invitado.id_boda, id: invitado.id}})
       .then(response => {
-        let invitados = []
-        this.setState({invitados: response.data[this.state.id-1]})
+        this.setState(response.data[0])
         // let invitados = []
         // response.data.forEach(i => {
         //   invitados.push(i)
@@ -42,7 +46,8 @@ export class FormularioConfirmacion extends Component {
   render() {
     return (
       <div>
-        <h5>Registro de Invitados</h5>
+        <h4>Bienvenida {this.state.nombre} {this.state.apellido}</h4>
+        <h5>Rellena el formulario de confirmación</h5>
         <form >
           <label form="nombre">Nombre</label>
           <input className="form-control" id="nombre" type="text" name="nombre" placeholder={this.state.invitados?this.state.invitados.nombre:'null'} value={this.state.nombre} onChange={this.handleChange} />

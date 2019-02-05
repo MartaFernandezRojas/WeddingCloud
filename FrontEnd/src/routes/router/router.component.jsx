@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 // Import global resources
 import { logo2 } from '../../assets';
 import { Text, Galeria, Formulario, LogIn, FormularioConfirmacion} from '../../components';
-import { Switch, Route, Link, BrowserRouter } from 'react-router-dom';
+import { Switch, Route, Link, BrowserRouter,Redirect } from 'react-router-dom';
 
 // Import local resources
 import styles from './router.styles.css';
@@ -43,6 +43,7 @@ export class Router extends Component {
           </div>)
         }} />
          <Route path="/FormularioConfirmacion" exact component={FormularioConfirmacion} />
+       
       </Switch>
       </BrowserRouter>
     );
