@@ -61,7 +61,7 @@ var controller = {
         });
     },
     invitadoUpdate: function (req, res) {
-        let sql = `UPDATE invitados set nombre='${req.body.nombre}',apellido='${req.body.apellido}',email='${req.body.email}',password='${req.body.password}',id_alergia='${req.body.id_alergia}', confirmacion='${req.body.confirmacion}',parte='${req.body.parte}',familia='${req.body.familia}', fiestapreboda='${req.body.fiestapreboda}',comentarios='${req.body.comentarios}' where id = ${req.body.id} and id_boda=${req.body.id_boda}`;
+        let sql = `UPDATE invitados set nombre='${req.body.nombre}',apellido='${req.body.apellido}',email='${req.body.email}',id_alergia='${req.body.id_alergia}', confirmacion='${req.body.confirmacion}',parte='${req.body.parte}',familia='${req.body.familia}', fiestapreboda='${req.body.fiestapreboda}',comentarios='${req.body.comentarios}' where id = ${req.body.id} and id_boda=${req.body.id_boda}`;
         con.query(sql, function (err, result) {
             if (err) {
                 res.send(err);
@@ -71,7 +71,6 @@ var controller = {
                     nombre: req.body.nombre,
                     apellido: req.body.apellido,
                     email: req.body.email,
-                    password: req.body.password,
                     id_alergia: req.body.id_alergia,
                     confirmacion: req.body.confirmacion,
                     parte: req.body.parte,
