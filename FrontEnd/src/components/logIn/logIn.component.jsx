@@ -5,7 +5,7 @@ import axios from 'axios';
 import { FormularioConfirmacion } from '../formConfirmacion';
 import styles from '../../routes/router/router.styles.css';
 import { Switch, Redirect, BrowserRouter, } from 'react-router-dom';
-
+import stylesform from './login.css';
 
 ///////////// Component ////////////////
 export class LogIn extends Component {
@@ -57,7 +57,7 @@ export class LogIn extends Component {
         const redireccion2 = this.state.redirect2 ? <Redirect from="/" to="/gestionInvitados" /> : null
         return (
             <div>
-                <h5>Log In</h5>
+                <h3>Log In</h3>
                 <form >
                     <label form="email">Email:</label>
                     <input className="form-control validate" id="emailregistro" type="email" name="Email" placeholder="Email" value={this.state.email} onChange={this.handleChange} />

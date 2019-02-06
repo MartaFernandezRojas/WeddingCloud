@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import { Store } from '@Models';
 // Import global resources
-import { logo2 } from '../../assets';
+import { cloud } from '../../assets';
 import { Text, Galeria, Formulario, LogIn, FormularioConfirmacion, ResultadoInvitado, GestionInvitados } from '../../components';
 import { Switch, Route, Link, BrowserRouter, Redirect } from 'react-router-dom';
 
@@ -37,15 +37,8 @@ export class Router extends Component {
             <Route path="/" exact render={() => {
               return (
                 <div className={styles.container}>
-                
+                        <img src={cloud} className={styles.image} />
                     <div className="row">
-                      <div className="col-l12">
-                        <img src={logo2} className={styles.image} />
-                        <h1 className={styles.title}>Wedding Cloud</h1>
-                      </div>
-                    </div>
-
-                    <div className="row ">
                       <div className="col-l6 mx-5">
                         <Formulario />
                       </div>
