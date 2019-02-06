@@ -1,8 +1,11 @@
 // Import libraries
 import React, { Component } from 'react';
+
+import { Provider } from 'react-redux';
+import { Store } from '@Models';
 // Import global resources
 import { logo2 } from '../../assets';
-import { Text, Galeria, Formulario, LogIn, FormularioConfirmacion, ResultadoInvitado } from '../../components';
+import { Text, Galeria, Formulario, LogIn, FormularioConfirmacion, ResultadoInvitado, GestionInvitados } from '../../components';
 import { Switch, Route, Link, BrowserRouter, Redirect } from 'react-router-dom';
 
 // Import local resources
@@ -29,26 +32,33 @@ export class Router extends Component {
   render() {
     return (
       <BrowserRouter>
-        <Switch >
-          <Route path="/" exact render={() => {
-            return (
-              <div className={styles.container}>
-                <img src={logo2} className={styles.image} />
-                <h1 className={styles.title}>Wedding Cloud</h1>
-                <div className={styles.subContainer}>
-                  <Formulario />
-                  <hr className={styles.linea} />
-                  <LogIn />
+        <Provider store={Store}>
+          <Switch >
+            <Route path="/" exact render={() => {
+              return (
+                <div className={styles.container}>
+                  <div className="row center">
+                    <div className="col-l12">
+                      <img src={logo2} className={styles.image} />
+                      <h1 className={styles.title}>Wedding Cloud</h1>
+                    </div>
+                  </div>
+                  <div className="row center">
+                    <div className="col-l6">
+                      <Formulario />
+                    </div>
+                    <div className="col-l6">
+                      <LogIn />
+                    </div>
+                  </div>
                 </div>
-              </div>)
-          }} />
-          <div className={styles.container}>
-            <div className={styles.subContainer}>
-              <Route path="/FormularioConfirmacion" exact component={FormularioConfirmacion} />
-            </div>
-          </div>
-        </Switch>
-      </BrowserRouter>
+              )
+            }} />
+            <Route path="/FormularioConfirmacion" exact component={FormularioConfirmacion} />
+            <Route path="/gestionInvitados" exact component={GestionInvitados} />
+          </Switch>
+        </Provider>
+      </BrowserRouter >
     );
   }
 }

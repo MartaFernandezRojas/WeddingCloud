@@ -5,14 +5,7 @@ import axios from 'axios';
 import { FormularioConfirmacion } from '../formConfirmacion';
 import styles from '../../routes/router/router.styles.css';
 import { Switch, Redirect, BrowserRouter, } from 'react-router-dom';
-// import stylesform from './formulario.styles.css';
-// Import global resources
 
-// Import local resources
-// import styles from './galeria.styles.css';
-
-//import componenet react-materialize
-// import {Button} from 'react-materialize';
 
 ///////////// Component ////////////////
 export class LogIn extends Component {
@@ -21,7 +14,8 @@ export class LogIn extends Component {
         this.state = {
             emailregistro: '',
             passwordregistro: '',
-            redirect:false
+            redirect: false,
+            redirect2: false,
         };
         this.handleChange = this.handleChange.bind(this);
     }
@@ -40,14 +34,24 @@ export class LogIn extends Component {
         axios.post('http://localhost:3000/log/logIn', user)
             .then(response => {
                 if (response.status === 200) {
+                    if (response.data.rol == 0) {
+                        localStorage.setItem('invitado', JSON.stringify(response.data));
+                        this.setState({ redirect: true })
+                    }
+                 else {
                     localStorage.setItem('invitado', JSON.stringify(response.data));
-                  this.setState({redirect:true})
+                    this.setState({ redirect2: true })
+                    console.log(this.state.redirect2);
+                    console.log(this.state.redirect);
                 }
+            }
+            
             })
-    }
+        }
     render() {
-        const redireccion=this.state.redirect ?   <Redirect from ="/" to="/FormularioConfirmacion" /> : null
-       return (
+        const redireccion = this.state.redirect ? <Redirect from="/" to="/FormularioConfirmacion" /> : null
+        const redireccion2 = this.state.redirect2 ? <Redirect from="/" to="/gestionInvitados" /> : null
+        return (
             <div>
                 <h5>Log In</h5>
                 <form >
@@ -59,9 +63,10 @@ export class LogIn extends Component {
                         this.logInUser();
                     }
                     } className={styles.button} value='Confirmar' />
-                    
+
                 </form>
                 {redireccion}
+                {redireccion2}
             </div>
         );
     }

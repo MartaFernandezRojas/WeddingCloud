@@ -1,8 +1,14 @@
 h4{
-    color:white;
+    margin-top:50px;
+    color:rgb(85, 84, 84);
     text-align: center;
 }
 
-.izquierda{
-    float:left;
+h5{
+    color:rgb(85, 84, 84);
+}
+
+.lateral{
+margin-top: 200px;
+    
 }
