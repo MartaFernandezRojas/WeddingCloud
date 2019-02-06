@@ -2,8 +2,8 @@
 import React, { Component } from 'react';
 // Import global resources
 import { logo2 } from '../../assets';
-import { Text, Galeria, Formulario, LogIn, FormularioConfirmacion} from '../../components';
-import { Switch, Route, Link, BrowserRouter,Redirect } from 'react-router-dom';
+import { Text, Galeria, Formulario, LogIn, FormularioConfirmacion, ResultadoInvitado } from '../../components';
+import { Switch, Route, Link, BrowserRouter, Redirect } from 'react-router-dom';
 
 // Import local resources
 import styles from './router.styles.css';
@@ -29,22 +29,25 @@ export class Router extends Component {
   render() {
     return (
       <BrowserRouter>
-      <Switch >
-        <Route path="/" exact render={() => {
-          return (
+        <Switch >
+          <Route path="/" exact render={() => {
+            return (
+              <div className={styles.container}>
+                <img src={logo2} className={styles.image} />
+                <h1 className={styles.title}>Wedding Cloud</h1>
+                <div className={styles.subContainer}>
+                  <Formulario />
+                  <hr className={styles.linea} />
+                  <LogIn />
+                </div>
+              </div>)
+          }} />
           <div className={styles.container}>
-            <img src={logo2} className={styles.image} />
-            <h1 className={styles.title}>Wedding Cloud</h1>
             <div className={styles.subContainer}>
-              <Formulario />
-              <hr className={styles.linea} />
-              <LogIn />
+              <Route path="/FormularioConfirmacion" exact component={FormularioConfirmacion} />
             </div>
-          </div>)
-        }} />
-         <Route path="/FormularioConfirmacion" exact component={FormularioConfirmacion} />
-       
-      </Switch>
+          </div>
+        </Switch>
       </BrowserRouter>
     );
   }

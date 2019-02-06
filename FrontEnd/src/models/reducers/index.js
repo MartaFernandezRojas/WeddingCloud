@@ -1,2 +1,13 @@
-import { rootReducer } from './root.reducer';
-export const allReducers = rootReducer;
+import {
+    combineReducers
+  } from 'redux';
+  import {
+    rootReducer
+  } from './root.reducer';
+
+  
+  
+  // Combining all reducers and exporting them
+  export const allReducers = combineReducers({
+    rootReducer,
+  });

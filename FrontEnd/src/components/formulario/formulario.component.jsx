@@ -1,7 +1,7 @@
 // Import libraries
 import React, { Component } from 'react';
 import axios from 'axios';
-
+import { ResultadoInvitado } from '../resultadoInvitado/resultadoInvitado.component'
 import styles from '../../routes/router/router.styles.css';
 import stylesform from './formulario.styles.css';
 // Import global resources
@@ -17,16 +17,16 @@ export class Formulario extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        id_boda: null,
-        nombre: '',
-        apellido: '',
-        email: '',
-        password: '',
-        rol:0
+      id_boda: null,
+      nombre: '',
+      apellido: '',
+      email: '',
+      password: '',
+      rol: 0
     };
     this.handleChange = this.handleChange.bind(this);
   }
-  show(){
+  show() {
     // console.log(this.state);
   }
 
@@ -37,11 +37,11 @@ export class Formulario extends Component {
   }
   insertUser() {
 
-      axios.post('http://localhost:3000/invitados/post', this.state)
+    axios.post('http://localhost:3000/invitados/post', this.state)
       .then(response => {
-        
+
       })
-  
+
   }
   render() {
     return (
@@ -55,11 +55,11 @@ export class Formulario extends Component {
           <label form="apellido">Apellido:</label>
           <input className="form-control" id="apellido" type="text" name="apellido" placeholder="Apellido" value={this.state.apellido} onChange={this.handleChange} />
           <label form="email">Email:</label>
-          <input className="form-control validate" id="email" type="email" name="Email" placeholder="Email"  value={this.state.email} onChange={this.handleChange} />
+          <input className="form-control validate" id="email" type="email" name="Email" placeholder="Email" value={this.state.email} onChange={this.handleChange} />
           <label form="password">Passsword:</label>
           <input className="form-control" id="password" type="password" name="Password" placeholder="Password" value={this.state.password} onChange={this.handleChange} />
           <input type='button' onClick={() => {
-              this.insertUser();
+            this.insertUser();
           }
           } className={styles.button} value='Confirmar' />
         </form>

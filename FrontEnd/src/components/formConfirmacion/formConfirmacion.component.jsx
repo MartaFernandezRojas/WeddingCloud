@@ -6,15 +6,15 @@ import axios from 'axios';
 import styles2 from './formConfirmacion.styles.css';
 import styles from '../../routes/router/router.styles.css';
 
-
+import { ResultadoInvitado } from '../resultadoInvitado/resultadoInvitado.component';
 
 ///////////// Component ////////////////
 export class FormularioConfirmacion extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      confirmacion:null,
-      id_alergia:null,
+      confirmacion: null,
+      id_alergia: null,
       parte: null,
       familia: null,
       fiestapreboda: null,
@@ -28,46 +28,46 @@ export class FormularioConfirmacion extends Component {
   }
 
   insertUser() {
-    if(this.state.confirmacion=='si'){
-      this.state.confirmacion=1;
-    }else{
-      this.state.confirmacion=0;
+    if (this.state.confirmacion == 'si') {
+      this.state.confirmacion = 1;
+    } else {
+      this.state.confirmacion = 0;
     }
-    if(this.state.parte=='novio'){
-      this.state.parte=1;
-    }else{
-      this.state.parte=0;
+    if (this.state.parte == 'novio') {
+      this.state.parte = 1;
+    } else {
+      this.state.parte = 0;
     }
-    if(this.state.familia=='si'){
-      this.state.familia=1;
-    }else{
-      this.state.familia=0;
+    if (this.state.familia == 'si') {
+      this.state.familia = 1;
+    } else {
+      this.state.familia = 0;
     }
-    if(this.state.fiestapreboda=='si'){
-      this.state.fiestapreboda=1;
-    }else{
-      this.state.fiestapreboda=0;
+    if (this.state.fiestapreboda == 'si') {
+      this.state.fiestapreboda = 1;
+    } else {
+      this.state.fiestapreboda = 0;
     }
 
 
     // console.log(document.getElementById(confirmacion).value);
     let user = {
-      id:this.state.id,
-      id_boda:this.state.id_boda,
+      id: this.state.id,
+      id_boda: this.state.id_boda,
       nombre: this.state.nombre,
       apellido: this.state.apellido,
       email: this.state.email,
-      confirmacion:this.state.confirmacion,
-      id_alergia:this.state.id_alergia,
-      parte:this.state.parte,
-      familia:this.state.familia,
-      fiestapreboda:this.state.fiestapreboda,
-      comentarios:this.state.comentarios
+      confirmacion: this.state.confirmacion,
+      id_alergia: this.state.id_alergia,
+      parte: this.state.parte,
+      familia: this.state.familia,
+      fiestapreboda: this.state.fiestapreboda,
+      comentarios: this.state.comentarios
     }
     console.log(user);
     axios.post('http://localhost:3000/invitados/update', user)
       .then(response => {
-        
+
       })
   }
 
@@ -82,6 +82,7 @@ export class FormularioConfirmacion extends Component {
     axios.get('http://localhost:3000/invitados/getMofificar', { params: { idb: invitado.id_boda, id: invitado.id } })
       .then(response => {
         this.setState(response.data[0])
+
       })
   }
   render() {
@@ -99,29 +100,29 @@ export class FormularioConfirmacion extends Component {
 
           <p>Confirmación de asistencia:</p>
           <label>
-            <input className="form-control validate" name="confirmacion" id="confirmacion" type="radio" checked={this.state.confirmacion === 'si'}   value='si' onChange={this.handleChange} />
+            <input className="form-control validate" name="confirmacion" id="confirmacion" type="radio" checked={this.state.confirmacion === 'si'} value='si' onChange={this.handleChange} />
             <span>Si puedo</span>
           </label>
           <label>
-            <input className="form-control validate" name="confirmacion" id="confirmacion"  type="radio" checked={this.state.confirmacion === 'no'}  value='no' onChange={this.handleChange} />
+            <input className="form-control validate" name="confirmacion" id="confirmacion" type="radio" checked={this.state.confirmacion === 'no'} value='no' onChange={this.handleChange} />
             <span>No puedo</span>
           </label>
           <p>Alergia o intolerancia</p>
           <label>
-            <input className="form-control validate" id="id_alergia" type="radio" name="alergia"  checked={this.state.id_alergia === 'celiaco'} value='celiaco' onChange={this.handleChange} />
+            <input className="form-control validate" id="id_alergia" type="radio" name="alergia" checked={this.state.id_alergia === 'celiaco'} value='celiaco' onChange={this.handleChange} />
             <span>Celiaco</span>
           </label>
           <label>
-            <input className="form-control validate" id="id_alergia" type="radio" name="alergia"  checked={this.state.id_alergia === 'lactosa'} value='lactosa' onChange={this.handleChange} />
+            <input className="form-control validate" id="id_alergia" type="radio" name="alergia" checked={this.state.id_alergia === 'lactosa'} value='lactosa' onChange={this.handleChange} />
             <span>Lactosa</span>
           </label>
           <p>Vienes de parte de:</p>
           <label>
-            <input className="form-control validate" id="parte" type="radio" name="parte" checked={this.state.parte === 'novia'} value='novia'  onChange={this.handleChange} />
+            <input className="form-control validate" id="parte" type="radio" name="parte" checked={this.state.parte === 'novia'} value='novia' onChange={this.handleChange} />
             <span>Novia</span>
           </label>
           <label>
-            <input className="form-control validate" id="parte" type="radio" name="parte" checked={this.state.parte=== 'novio'} value='novio'  onChange={this.handleChange} />
+            <input className="form-control validate" id="parte" type="radio" name="parte" checked={this.state.parte === 'novio'} value='novio' onChange={this.handleChange} />
             <span>Novio</span>
           </label>
 
@@ -134,21 +135,19 @@ export class FormularioConfirmacion extends Component {
             <input className="form-control validate" id="familia" type="radio" name="familia" checked={this.state.familia === 'no'} value='no' onChange={this.handleChange} />
             <span>Amigo</span>
           </label>
-
           <p>Asistiras a nuestra gran fiesta preboda</p>
           <label>
             <input className="form-control validate" id="fiestapreboda" type="radio" name="fiestapreboda" checked={this.state.fiestapreboda === 'si'} value='si' onChange={this.handleChange} />
             <span>Si, a darlo todo</span>
           </label>
           <label>
-            <input className="form-control validate" id="fiestapreboda" type="radio" name="fiestapreboda"checked={this.state.fiestapreboda === 'si'} value='si' onChange={this.handleChange} />
+            <input className="form-control validate" id="fiestapreboda" type="radio" name="fiestapreboda" checked={this.state.fiestapreboda === 'si'} value='si' onChange={this.handleChange} />
             <span>No, me reservo para la  gran boda</span>
           </label>
           <p>DEJANOS TUS COMENTARIOS, EMOCIONES, PETICIONES DE CANCIONES....</p>
-          <div className="input-field col s6">
+          <div className="input-field">
             <i className="material-icons prefix">mode_edit</i>
-            <textarea  className="materialize-textarea" id="comentarios" value={this.state.comentarios}  onChange={this.handleChange}></textarea>
-            
+            <textarea className="materialize-textarea" id="comentarios" value={this.state.comentarios} onChange={this.handleChange}></textarea>
           </div>
 
           <input type='button' onClick={() => {
@@ -156,6 +155,9 @@ export class FormularioConfirmacion extends Component {
           }
           } className={styles.button} value='Confirmar' />
         </form>
+        <div className="izquierda">
+          <ResultadoInvitado />
+        </div>
       </div>
     );
   }
