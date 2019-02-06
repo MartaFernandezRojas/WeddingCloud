@@ -46,6 +46,9 @@ export class Router extends Component {
                         <LogIn />
                       </div>
                     </div>
+                    <div className={styles.animate}>
+
+                    </div>
                 </div>
               )
             }} />

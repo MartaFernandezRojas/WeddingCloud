@@ -6,6 +6,8 @@ import {
     MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon
 } from "mdbreact";
 
+import { cloud } from '../../assets';
+
 export class Navbar extends Component {
     state = {
         isOpen: false
@@ -19,7 +21,7 @@ export class Navbar extends Component {
         return (
             <MDBNavbar color="#90caf9 blue lighten-3" dark expand="md">
                 <MDBNavbarBrand>
-                    <strong className="white-text">Navbar</strong>
+                {/* <img src={cloud} style={{width:"5%"}}/> */}
                 </MDBNavbarBrand>
                 <MDBNavbarToggler onClick={this.toggleCollapse} />
                 <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>

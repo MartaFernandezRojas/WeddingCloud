@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { MDBDataTable } from 'mdbreact';
 
-
+import styles from './gestionInvitados.styles.css';
 
 import { Navbar } from '@Components'
 //Import Stilos
@@ -92,12 +92,12 @@ export class GestionInvitados extends Component {
       <Navbar />
       <div className="container">
         <div className="row">
-          <div className="col-l12">
-            <h1> Panel de administrador de: {this.state.nombre}</h1>
+          <div className="col l12">
+            <h1> Panel de administrador de {this.state.nombre}</h1>
           </div>
         </div>
         <div className="row">
-          <div className="col-l12">
+          <div className="col l12">
             <ul>
               <MDBDataTable
                 striped
