@@ -31,18 +31,22 @@ export class LogIn extends Component {
             email: this.state.emailregistro,
             password: this.state.passwordregistro
         }
+
         axios.post('http://localhost:3000/log/logIn', user)
             .then(response => {
+                console.log(response);
                 if (response.status === 200) {
                     if (response.data.rol == 0) {
                         localStorage.setItem('invitado', JSON.stringify(response.data));
                         this.setState({ redirect: true })
                     }
-                 else {
+                 else if(response.data.rol == 1) {
                     localStorage.setItem('invitado', JSON.stringify(response.data));
                     this.setState({ redirect2: true })
                     console.log(this.state.redirect2);
                     console.log(this.state.redirect);
+                }else{
+                    console.log('problem')
                 }
             }
             

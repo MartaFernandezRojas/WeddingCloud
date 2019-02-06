@@ -8,7 +8,7 @@ var controller = {
         //     if (err) {
         //         res.sendStatus(403);
         //     } else {
-        let sql = `SELECT * from invitados where id_boda = '${req.body.id_boda}'}`;
+        let sql = `SELECT * from invitados where id_boda = ${req.query.idb}`;
         con.query(sql, function (err, result) {
             if (err) {
                 return res.send(err);
