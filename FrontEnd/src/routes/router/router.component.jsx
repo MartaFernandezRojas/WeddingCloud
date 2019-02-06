@@ -37,20 +37,22 @@ export class Router extends Component {
             <Route path="/" exact render={() => {
               return (
                 <div className={styles.container}>
-                  <div className="row center">
-                    <div className="col-l12">
-                      <img src={logo2} className={styles.image} />
-                      <h1 className={styles.title}>Wedding Cloud</h1>
+                
+                    <div className="row">
+                      <div className="col-l12">
+                        <img src={logo2} className={styles.image} />
+                        <h1 className={styles.title}>Wedding Cloud</h1>
+                      </div>
                     </div>
-                  </div>
-                  <div className="row center">
-                    <div className="col-l6">
-                      <Formulario />
+
+                    <div className="row ">
+                      <div className="col-l6 mx-5">
+                        <Formulario />
+                      </div>
+                      <div className="col-l6 mx-5">
+                        <LogIn />
+                      </div>
                     </div>
-                    <div className="col-l6">
-                      <LogIn />
-                    </div>
-                  </div>
                 </div>
               )
             }} />

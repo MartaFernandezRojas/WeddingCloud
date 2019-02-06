@@ -85,7 +85,7 @@ export class FormularioConfirmacion extends Component {
                 <input className="form-control validate" id="email" type="email" name="Email" placeholder={this.state.invitados ? this.state.invitados.email : 'null'} value={this.state.email} onChange={this.handleChange} />
                 <p>Confirmación de asistencia:</p>
                 <label>
-                  <input className="form-control validate" name="confirmacion" id="confirmacion" type="radio" checked={this.state.confirmacion === 'Si'} value='Si' onChange={this.handleChange} label="Si" />
+                  <input className="form-control validate" name="confirmacion" id="confirmacion" type="radio" checked={this.state.confirmacion === 'Si'} value='Si' onChange={this.handleChange} />
                   <span>Si puedo</span>
                 </label>
                 <label>

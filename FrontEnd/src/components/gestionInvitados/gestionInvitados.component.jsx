@@ -3,14 +3,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { MDBDataTable } from 'mdbreact';
 
-const columns = ["Person Name", "Age", "Company Name", "Country", "City"];
-
-const data = [
-  ["Aurelia Vega", 30, "Deepends", "Spain", "Madrid"],
-  ["Guerra Cortez", 45, "Insectus", "USA", "San Francisco"],
-  ["Guadalupe House", 26, "Isotronic", "Germany", "Frankfurt am Main"],
-  ["Elisa Gallagher", 31, "Portica", "United Kingdom", "London"]
-];
 
 
 import { Navbar } from '@Components'
@@ -32,12 +24,70 @@ export class GestionInvitados extends Component {
     axios.get('http://localhost:3000/invitados/get', { params: { idb: invitado.id_boda } })
       .then(response => {
         this.setState({ invitados: response.data })
-        console.log(this.state)
-
       })
 
   }
   render() {
+
+    const data = {
+      columns: [
+        {
+          label: 'Nombre',
+          field: 'Nombre',
+          sort: 'asc',
+          width: 150
+        },
+        {
+          label: 'Apellido',
+          field: 'Apellido',
+          sort: 'asc',
+          width: 270
+        },
+        {
+          label: 'Email',
+          field: 'Email',
+          sort: 'asc',
+          width: 200
+        },
+        {
+          label: 'Confirmacion',
+          field: 'Confirmacion',
+          sort: 'asc',
+          width: 100
+        },
+        {
+          label: 'Parte de:',
+          field: 'Parte de:',
+          sort: 'asc',
+          width: 150
+        },
+        {
+          label: 'Familia',
+          field: 'Familia',
+          sort: 'asc',
+          width: 100
+        },
+        {
+          label: 'Alergia',
+          field: 'Alergia',
+          sort: 'asc',
+          width: 100
+        },
+        {
+          label: 'Fiesta preboda',
+          field: 'Fiesta preboda',
+          sort: 'asc',
+          width: 100
+        },
+        {
+          label: 'Comentarios',
+          field: 'Comentarios',
+          sort: 'asc',
+          width: 100
+        }
+      ],
+      rows: this.state.invitados,
+    }
     return (<div>
       <Navbar />
       <div className="container">
@@ -49,9 +99,12 @@ export class GestionInvitados extends Component {
         <div className="row">
           <div className="col-l12">
             <ul>
-              {this.state.invitados.map((e, index) => {
-                return <p>{e.nombre}</p>
-              })}
+              <MDBDataTable
+                striped
+                bordered
+                hover
+                data={data}
+              />
             </ul>
           </div>
         </div>

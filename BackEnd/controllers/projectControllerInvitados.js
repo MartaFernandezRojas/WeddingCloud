@@ -8,11 +8,12 @@ var controller = {
         //     if (err) {
         //         res.sendStatus(403);
         //     } else {
-        let sql = `SELECT * from invitados where id_boda = ${req.query.idb}`;
+        let sql = `SELECT nombre,apellido,email,confirmacion,parte,familia,id_alergia,fiestapreboda,comentarios from invitados where id_boda = ${req.query.idb}`;
         con.query(sql, function (err, result) {
             if (err) {
                 return res.send(err);
             } else {
+              
                 return res.send(result);
             }
         });
