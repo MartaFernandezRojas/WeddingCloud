@@ -1,3 +1,4 @@
+import { cloud } from '../../assets';
 // Import libraries
 import React, { Component } from 'react';
 import axios from 'axios';
@@ -6,9 +7,7 @@ import {
     MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon
 } from "mdbreact";
 
-import { cloud } from '../../assets';
-
-export class Navbar extends Component {
+export class NavbarInvitados extends Component {
     state = {
         isOpen: false
     };
@@ -24,19 +23,16 @@ export class Navbar extends Component {
                 <img src={cloud} style={{width:"12%"}}/>
                 </MDBNavbarBrand>
                 <MDBNavbarToggler onClick={this.toggleCollapse} />
-                <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar > 
-                    <MDBNavbarNav right>
-                        <MDBNavItem >
+                <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
+                    <MDBNavbarNav left>
+                        <MDBNavItem right>
                             <MDBNavLink to="#!">Mensajeria</MDBNavLink>
                         </MDBNavItem>
-                        <MDBNavItem >
-                            <MDBNavLink to="/gestionInvitados">Invitados</MDBNavLink>
+                        <MDBNavItem active right>
+                            <MDBNavLink to="/FormularioConfirmacion">Confirmacion</MDBNavLink>
                         </MDBNavItem>
-                        <MDBNavItem >
-                            <MDBNavLink to="/mesas">Mesas</MDBNavLink>
-                        </MDBNavItem>
-                        <MDBNavItem>
-                            {/* <MDBDropdown>
+                        {/* <MDBNavItem>
+                            <MDBDropdown>
                                 <MDBDropdownToggle nav caret>
                                     <div className="d-none d-md-inline">Dropdown</div>
                                 </MDBDropdownToggle>
@@ -46,11 +42,11 @@ export class Navbar extends Component {
                                     <MDBDropdownItem href="#!">Something else here</MDBDropdownItem>
                                     <MDBDropdownItem href="#!">Something else here</MDBDropdownItem>
                                 </MDBDropdownMenu>
-                            </MDBDropdown> */}
+                            </MDBDropdown>
                         </MDBNavItem>
                     </MDBNavbarNav>
                     <MDBNavbarNav right>
-                        {/* <MDBNavItem>
+                        <MDBNavItem>
                             <MDBNavLink className="waves-effect waves-light" to="#!">
                                 <MDBIcon fab icon="twitter" />
                             </MDBNavLink>

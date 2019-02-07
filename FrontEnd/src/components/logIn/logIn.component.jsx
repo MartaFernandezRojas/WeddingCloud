@@ -6,7 +6,7 @@ import { FormularioConfirmacion } from '../formConfirmacion';
 import styles from '../../routes/router/router.styles.css';
 import { Switch, Redirect, BrowserRouter, } from 'react-router-dom';
 import stylesform from './login.css';
-
+import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter } from 'mdbreact';
 ///////////// Component ////////////////
 export class LogIn extends Component {
     constructor(props) {
@@ -16,6 +16,7 @@ export class LogIn extends Component {
             passwordregistro: '',
             redirect: false,
             redirect2: false,
+            modal: false
         };
         this.handleChange = this.handleChange.bind(this);
     }
@@ -24,7 +25,6 @@ export class LogIn extends Component {
         this.setState({
             [event.target.id]: event.target.value
         });
-
     }
     logInUser() {
         let user = {
@@ -40,24 +40,27 @@ export class LogIn extends Component {
                         localStorage.setItem('invitado', JSON.stringify(response.data));
                         this.setState({ redirect: true })
                     }
-                 else if(response.data.rol == 1) {
-                    localStorage.setItem('invitado', JSON.stringify(response.data));
-                    this.setState({ redirect2: true })
-                    console.log(this.state.redirect2);
-                    console.log(this.state.redirect);
-                }else{
-                    console.log('problem')
+                    else if (response.data.rol == 1) {
+                        localStorage.setItem('invitado', JSON.stringify(response.data));
+                        this.setState({ redirect2: true })
+                        console.log(this.state.redirect2);
+                        console.log(this.state.redirect);
+                    } else {
+                       
+                        console.log('problem')
+                    }
                 }
-            }
-            
+
             })
-        }
+    }
     render() {
         const redireccion = this.state.redirect ? <Redirect from="/" to="/FormularioConfirmacion" /> : null
         const redireccion2 = this.state.redirect2 ? <Redirect from="/" to="/gestionInvitados" /> : null
         return (
             <div>
-                <h3>Log In</h3>
+                
+         
+                <h5>Log In</h5>
                 <form >
                     <label form="email">Email:</label>
                     <input className="form-control validate" id="emailregistro" type="email" name="Email" placeholder="Email" value={this.state.email} onChange={this.handleChange} />

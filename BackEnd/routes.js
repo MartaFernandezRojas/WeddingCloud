@@ -55,6 +55,7 @@ app.post('/invitados/update', ProjectControllerinvitados.invitadoUpdate);
 
 app.post('/log/logIn', ProjectControllerLogin.loginUser);
 
+
 app.get('/admin/preboda', ProjectControllerAdmin.getPreboda);
 app.get('/admin/confirmados', ProjectControllerAdmin.getConfirmados);
 app.get('/admin/alergias', ProjectControllerAdmin.getAlergia);
@@ -62,6 +63,8 @@ app.get('/admin/noviofamilia', ProjectControllerAdmin.getNovioFamilia);
 app.get('/admin/noviafamilia', ProjectControllerAdmin.getNoviaFamilia);
 app.get('/admin/novioAmigos', ProjectControllerAdmin.getNovioAmigos);
 app.get('/admin/noviaAmigos', ProjectControllerAdmin.getNoviaAmigos);
+
+
 
 function veryfyToken(req,res,next){
     const bearerHeader = req.headers['authorization'];

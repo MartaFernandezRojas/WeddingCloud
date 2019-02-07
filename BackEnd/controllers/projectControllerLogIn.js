@@ -32,8 +32,7 @@ var controller = {
                 };
             };
         });
-        
-
+    
     }
 };
 

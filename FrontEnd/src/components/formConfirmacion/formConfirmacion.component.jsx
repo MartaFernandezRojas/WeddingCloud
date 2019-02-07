@@ -6,9 +6,11 @@ import axios from 'axios';
 //Import Stilos
 import styles2 from './formConfirmacion.styles.css';
 import styles from '../../routes/router/router.styles.css';
-import { Navbar } from '../navbar/navbar.component'
-import { MDBCard, MDBCardTitle, MDBCardText, MDBContainer } from "mdbreact";
+import { NavbarInvitados } from '../navbarInvitados/navbarInvitados.component'
+import { MDBCard, MDBCardText, MDBContainer} from "mdbreact";
 import { style } from 'react-toastify';
+import Card from '../../../node_modules/react-materialize/lib/Card';
+import {CardExample} from '../cardInvitado/cardInvitado.component';
 
 ///////////// Component ////////////////
 export class FormularioConfirmacion extends Component {
@@ -20,8 +22,7 @@ export class FormularioConfirmacion extends Component {
       parte: null,
       familia: null,
       fiestapreboda: null,
-      comentarios: 'Escribe lo que quieras',
-
+      comentarios: 'Escribe lo que quieras'
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -70,7 +71,7 @@ export class FormularioConfirmacion extends Component {
   render() {
     return (
       <div>
-        <Navbar />
+        <NavbarInvitados />
         <div className="container">
           <h4>Bienvenid@ {this.state.nombre} {this.state.apellido}</h4>
           <h5>Rellena el formulario de confirmación</h5>
@@ -85,11 +86,11 @@ export class FormularioConfirmacion extends Component {
                   <input className="form-control validate" id="email" type="email" name="Email" placeholder={this.state.invitados ? this.state.invitados.email : 'null'} value={this.state.email} onChange={this.handleChange} />
                   <p>Confirmación de asistencia:</p>
                   <div className="form-check">
-                    <input className="form-check-input" name="confirmacion" id="confirmacion" type="radio" checked={this.state.confirmacion === 'Si'} value='Si' onChange={this.handleChange} />
+                    <input className="form-check-input" name="confirmacion" id="confirmacion" type="radio" checked={this.state.confirmacion === 'Confirmado'} value='Confirmado' onChange={this.handleChange} />
                     <label  className={styles2.label}  for="Si puedo">Si</label>
                   </div>
                   <div className="form-check">
-                    <input className="form-check-input" name="confirmacion" id="confirmacion" type="radio" checked={this.state.confirmacion === 'No'} value='No' onChange={this.handleChange} />
+                    <input className="form-check-input" name="confirmacion" id="confirmacion" type="radio" checked={this.state.confirmacion === 'Ausente'} value='Ausente' onChange={this.handleChange} />
                     <label className={styles2.label}  for="Si puedo">No</label>
                   </div>
                   <p>Alergia o intolerancia</p>
@@ -121,11 +122,11 @@ export class FormularioConfirmacion extends Component {
                   </div>
                   <p>Asistiras a nuestra gran fiesta preboda</p>
                   <div className="form-check">
-                    <input className="form-check-input validate" id="fiestapreboda" type="radio" name="fiestapreboda" checked={this.state.fiestapreboda === 'Si'} value='Si' onChange={this.handleChange} />
+                    <input className="form-check-input validate" id="fiestapreboda" type="radio" name="fiestapreboda" checked={this.state.fiestapreboda === 'Fiesta'} value='Fiesta' onChange={this.handleChange} />
                     <label className={styles2.label} for="Si puedo">Si, a darlo todo</label>
                   </div>
                   <div className="form-check">
-                    <input className="form-check-input validate" id="fiestapreboda" type="radio" name="fiestapreboda" checked={this.state.fiestapreboda === 'No'} value='No' onChange={this.handleChange} />
+                    <input className="form-check-input validate" id="fiestapreboda" type="radio" name="fiestapreboda" checked={this.state.fiestapreboda === 'No Fiesta'} value='No Fiesta' onChange={this.handleChange} />
                     <label className={styles2.label} for="Si puedo">No, me reservo para la fiesta</label>
                   </div>
                   <div>
@@ -143,6 +144,7 @@ export class FormularioConfirmacion extends Component {
               </div>
           
           <div className="col l6" >
+          {/* <CardExample/> */}
             <MDBContainer>
               <MDBCard className="card-body" style={{ width: "30rem"}}>
                 <h5>Datos proporcionados:</h5>
@@ -159,6 +161,7 @@ export class FormularioConfirmacion extends Component {
                     <li className="list-group-item list-group-item-info">Comentarios: {this.state.comentarios}</li>
                   </ul>
                 </MDBCardText>
+                <button type="button" id="logoutButton">Logout</button>
               </MDBCard>
             </MDBContainer>
           </div>

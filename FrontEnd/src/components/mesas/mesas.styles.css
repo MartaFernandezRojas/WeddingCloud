@@ -1,0 +1,28 @@
+.sidebar{
+    background-color: grey;
+}
+
+p{
+    font-size:10px;
+}
+.circle{ background-image:url('../../assets/img/madera.jpg'); width: 200px; height: 200px; border-radius: 80px;  }
+.circle div { position:relative; left: 19px; top: 19px; width: 90px; height: 90px; color: white;padding:20px;margin-top:10px; }
+
+
+
+li{
+  height: 45px;
+}
+
+.etiquetas{
+    /* background-color: grey; */
+}
+
+h5{
+    color:white;
+    font-weight: 300;
+}
+
+Droppable{
+    background-color: blue;
+}

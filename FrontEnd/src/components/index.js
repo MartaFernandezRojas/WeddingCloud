@@ -7,3 +7,6 @@ export * from './formConfirmacion';
 export * from './resultadoInvitado';
 export * from './gestionInvitados';
 export * from './navbar';
+export * from './navbarInvitados';
+export * from './cardInvitado';
+export * from './mesas';

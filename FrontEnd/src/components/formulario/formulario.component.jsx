@@ -46,7 +46,7 @@ export class Formulario extends Component {
   render() {
     return (
       <div>
-        <h3>Registro de Invitado</h3>
+        <h5>Registro de Invitado</h5>
         <form >
           <label >ID Boda:</label>
           <input className="form-control" id="id_boda" type="text" name="boda" placeholder="ID Boda" value={this.state.id_boda} onChange={this.handleChange} />
