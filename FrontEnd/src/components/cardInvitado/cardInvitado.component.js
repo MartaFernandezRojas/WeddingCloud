@@ -1,78 +1,50 @@
 import React, { Component } from 'react';
-import { MDBCol, MDBRow, MDBCard, MDBCardUp, MDBCardBody, MDBAvatar, MDBRotatingCard, MDBIcon } from "mdbreact";
+import axios from 'axios';
+import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol } from 'mdbreact';
+import { style } from 'react-toastify';
 
-export default class CardExample extends Component {
-state = {
-  flipped: false
-}
+export  class CardInvitado extends Component {
+  constructor(props) {
+    super(props);
+    
+  }
 
-handleFlipping = () => {
-  this.setState({ flipped: !this.state.flipped });
-}
+  // componentDidMount() {
+  //   var invitado = JSON.parse(localStorage.getItem("invitado"));
+  //   this.setState(invitado);
+  //   axios.get('http://localhost:3000/invitados/getMofificar', { params: { idb: invitado.id_boda, id: invitado.id } })
+  //     .then(response => {
+  //       this.setState(response.data[0])
+  //       console.log(this.state)
+  //     })
+  // }
 
-render() {
-  const colStyle = { maxWidth: "22rem" };
+  render() {
+    let invitado= this.props;
+    return (
 
-  return (
-    <MDBRow>
-      <MDBCol style={{ minHeight: '26rem' }}>
-        <MDBRotatingCard flipped={this.state.flipped} className="text-center h-100 w-100" style={colStyle}>
-          <MDBCard className="face front">
-            <MDBCardUp>
-              <img className="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/photo7.jpg" alt="" />
-            </MDBCardUp>
-            <MDBAvatar className="mx-auto white" circle>
-              <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(20).jpg" alt="" className="rounded-circle" />
-            </MDBAvatar>
-            <MDBCardBody>
-              <h4 className="font-weight-bold mb-3">Marie Johnson</h4>
-              <p className="font-weight-bold blue-text">Web developer</p>
-              <a href="#!" className="rotate-btn" data-card="card-1" onClick={this.handleFlipping}>
-                <MDBIcon icon="redo" /> Click here to rotate
-              </a>
-            </MDBCardBody>
-          </MDBCard>
-          <MDBCard className="face back">
-            <MDBCardBody>
-              <h4 className="font-weight-bold">About me</h4>
-              <hr />
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Maxime quae, dolores dicta. Blanditiis rem amet repellat,
-                dolores nihil quae in mollitia asperiores ut rerum
-                repellendus, voluptatum eum, officia laudantium quaerat?
-              </p>
-              <hr />
-              <ul className="list-inline py-2">
-                <li className="list-inline-item">
-                  <a href="#!" className="p-2 fa-lg fb-ic">
-                    <MDBIcon icon="facebook" brand />
-                  </a>
-                </li>
-                <li className="list-inline-item">
-                  <a href="#!" className="p-2 fa-lg tw-ic">
-                    <MDBIcon icon="twitter" brand />
-                  </a>
-                </li>
-                <li className="list-inline-item">
-                  <a href="#!" className="p-2 fa-lg gplus-ic">
-                    <MDBIcon icon="google-plus" brand />
-                  </a>
-                </li>
-                <li className="list-inline-item">
-                  <a href="#!" className="p-2 fa-lg li-ic">
-                    <MDBIcon icon="linkedin" brand />
-                  </a>
-                </li>
+      <MDBCol>
+        <MDBCard style={{ width: "22rem" }}>
+          <MDBCardImage  className="img-fluid"   id="foto" src="http://www.oscarrodriguezvila.com/wp-content/uploads/2013/03/perfil-oscar2.jpg" waves />
+          <MDBCardBody>
+            <MDBCardTitle>{invitado.props.nombre} {invitado.props.apellido}</MDBCardTitle>
+            <MDBCardText>
+              <p>Estos son tus datos de confirmación:</p>
+              <ul>
+                <li className="list-group-item list-group-item-info">Email: {invitado.props.email}</li>
+                <li className="list-group-item list-group-item-info">Parte: {invitado.props.parte}</li>
+                <li className="list-group-item list-group-item-info">Confirmacion: {invitado.props.confirmacion}</li>
+                <li className="list-group-item list-group-item-info">Familia: {invitado.props.familia}</li>
+                <li className="list-group-item list-group-item-info">Fiesta preboda: {invitado.props.fiestapreboda}</li>
+                <li className="list-group-item list-group-item-info">Alergias: {invitado.props.id_alergia}</li>
+                <li className="list-group-item list-group-item-info">Comentarios: {invitado.props.comentarios}</li>
               </ul>
-              <a href="#!" className="rotate-btn" data-card="card-1" onClick={this.handleFlipping}>
-                <MDBIcon icon="undo" /> Click here to rotate back
-              </a>
-            </MDBCardBody>
-          </MDBCard>
-        </MDBRotatingCard>
+            </MDBCardText>
+            <p>*Si quieres modificar cualquier dato, vuelve a rellenar el formulario</p>
+          </MDBCardBody>
+        </MDBCard>
       </MDBCol>
-    </MDBRow>
     )
   }
 }
+

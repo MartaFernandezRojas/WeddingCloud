@@ -45,7 +45,7 @@
     "bootstrap-css-only": "^4.2.1",
     "mdbreact": "^4.10.0",
     "node-hot": "^4.0.1",
-    "react": "^16.4.1",
+    "react": "^16.8.1",
     "react-beautiful-dnd": "^10.0.4",
     "react-dom": "^16.4.1",
     "react-drag-and-drop": "^3.0.0",
