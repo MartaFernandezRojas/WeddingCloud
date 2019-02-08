@@ -84,19 +84,17 @@ export class Mesas extends PureComponent {
     // }
     onDrop(mesa, idUser) {
 
-
         let user = {
             id: idUser.invitado,
             mesa: mesa,
         }
-        console.log(user);
-        this.start();
+
         axios.post('http://localhost:3000/invitados/updateMesa', user)
             .then(response => {
-
+                this.start();
             })
 
-        this.start();
+        
     }
 
     render() {
@@ -104,7 +102,7 @@ export class Mesas extends PureComponent {
         return (
             <div>
                 <Navbar />
-                <div className="container">
+                <div className="container-fluid">
                     <h1>Planificador de mesas de {this.state.nombre}</h1>
                     <div className="row">
                         <div className="col l3">
@@ -112,77 +110,181 @@ export class Mesas extends PureComponent {
                         </div>
                     </div>
                     <div className="row">
-
-                        <div className="col l6">
-
-                            <div className={styles.circle}><div><h3>1</h3><ul className={style.lista}>
-                                <Droppable
-                                    types={['invitado']} // <= allowed drop types
-                                    onDrop={this.onDrop.bind(this, 1)}>
-
+                        <div className="col l4">
+                            <Droppable
+                                types={['invitado']} // <= allowed drop types
+                                onDrop={this.onDrop.bind(this, 1)}>
+                                <div className={styles.circle}><div><h3>1</h3><ul className={styles.lista}>
+                                <div className="col l6">
+                                   
                                     {this.state.invitados.map((e, index) => {
                                         if (e.mesa == 1) {
                                             return (
-                                                <Draggable type="invitado" data={e.id}> <li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-primary"><p>{e.nombre} {e.apellido}</p></li></Draggable>
                                             )
                                         }
                                     })}
-                                </Droppable>
-                            </ul>
-                            </div>
-                            </div>
+                                </div>
+                                </ul>
+                                </div>
+                                </div>
+                            </Droppable>
+                            <Droppable
+                                types={['invitado']} // <= allowed drop types
+                                onDrop={this.onDrop.bind(this, 4)}>
+                                <div className={styles.circle}><div><h3>4</h3><ul className={styles.lista}>
 
-                            <div className={styles.circle}><div><h3>2</h3><ul>
-                                <Droppable
-                                    types={['invitado']} // <= allowed drop types
-                                    onDrop={this.onDrop.bind(this, 2)}>
+                                  
+                                    {this.state.invitados.map((e, index) => {
+                                        if (e.mesa == 4) {
+                                            return (
+                                                <Draggable type="invitado" data={e.id}> <li className="list-group-item list-group-item-secondary"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                            )
+                                        }
+                                    })}
 
+                                </ul>
+                                </div>
+                                </div>
+                            </Droppable>
+                            <Droppable
+                                types={['invitado']} // <= allowed drop types
+                                onDrop={this.onDrop.bind(this, 7)}>
+                                <div className={styles.circle}><div><h3>7</h3><ul className={styles.lista}>
+
+
+                                    {this.state.invitados.map((e, index) => {
+                                        if (e.mesa == 7) {
+                                            return (
+                                                <Draggable type="invitado" data={e.id}> <li className="list-group-item list-group-item-light"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                            )
+                                        }
+                                    })}
+
+                                </ul>
+                                </div>
+                                </div>
+                            </Droppable>
+                        </div>
+                   
+                        <div className="col l4">
+                            <Droppable
+                                types={['invitado']} // <= allowed drop types
+                                onDrop={this.onDrop.bind(this, 2)}>
+                                <div className={styles.circle}><div><h3>2</h3><ul className={styles.lista}>
+                                <div className="col l6">
+                                  
                                     {this.state.invitados.map((e, index) => {
                                         if (e.mesa == 2) {
                                             return (
-                                                <Draggable type="invitado" data={e.id}> <li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>
                                             )
                                         }
                                     })}
-                                </Droppable>
-                            </ul>
-                            </div>
-                            </div>
+                                </div>
+                                </ul>
+                                </div>
+                                </div>
+                            </Droppable>
+                            <Droppable
+                                types={['invitado']} // <= allowed drop types
+                                onDrop={this.onDrop.bind(this, 5)}>
+                                <div className={styles.circle}><div><h3>5</h3><ul className={styles.lista}>
 
-                            <div className={styles.circle}><div><h3>11</h3><ul >
-                                <Droppable
-                                    types={['invitado']} // <= allowed drop types
-                                    onDrop={this.onDrop.bind(this, 11)}>
-
+                                   
                                     {this.state.invitados.map((e, index) => {
-                                        if (e.mesa == 11) {
+                                        if (e.mesa == 5) {
                                             return (
-                                                <Draggable type="invitado" data={e.id}> <li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                                <Draggable type="invitado" data={e.id}> <li className="list-group-item list-group-item-warning"><p>{e.nombre} {e.apellido}</p></li></Draggable>
                                             )
                                         }
                                     })}
-                                </Droppable>
-                            </ul>
-                            </div>
-                            </div>
 
-                        </div>
-                        <div className="col l6">
-                            <div className={styles.circle}><div><h3>8</h3></div></div>
-                            <div className={styles.circle}><div><h3>7</h3></div></div>
-                            <div className={styles.circle}><div><h3>12</h3></div></div>
+                                </ul>
+                                </div>
+                                </div>
+                            </Droppable>
+                            <Droppable
+                                types={['invitado']} // <= allowed drop types
+                                onDrop={this.onDrop.bind(this, 8)}>
+                                <div className={styles.circle}><div><h3>8</h3><ul className={styles.lista}>
+                                    {this.state.invitados.map((e, index) => {
+                                        if (e.mesa == 8) {
+                                            return (
+                                                <Draggable type="invitado" data={e.id}> <li className="list-group-item list-group-item-light"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                            )
+                                        }
+                                    })}
 
+                                </ul>
+                                </div>
+                                </div>
+                            </Droppable>
                         </div>
-                      
+                        <div className="col l4">
+                            <Droppable
+                                types={['invitado']} // <= allowed drop types
+                                onDrop={this.onDrop.bind(this, 3)}>
+                                <div className={styles.circle}><div><h3>3</h3><ul className={styles.lista}>
+                                <div className="col l6">
+                                  
+                                    {this.state.invitados.map((e, index) => {
+                                        if (e.mesa == 3) {
+                                            return (
+                                                <Draggable type="invitado" data={e.id}><li className="list-group-item list-group-item-primary"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                            )
+                                        }
+                                    })}
+                                </div>
+                                </ul>
+                                </div>
+                                </div>
+                            </Droppable>
+                            <Droppable
+                                types={['invitado']} // <= allowed drop types
+                                onDrop={this.onDrop.bind(this, 6)}>
+                                <div className={styles.circle}><div><h3>6</h3><ul className={styles.lista}>
+                                        MESA 6
+                                   
+                                    {this.state.invitados.map((e, index) => {
+                                        if (e.mesa == 6) {
+                                            return (
+                                                <Draggable type="invitado" data={e.id}> <li className="list-group-item list-group-item-info"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                            )
+                                        }
+                                    })}
+
+                                </ul>
+                                </div>
+                                </div>
+                            </Droppable>
+                            <Droppable
+                                types={['invitado']} // <= allowed drop types
+                                onDrop={this.onDrop.bind(this, 9)}>
+                                <div className={styles.circle}><div><h3>9</h3><ul className={styles.lista}>
+                                    {this.state.invitados.map((e, index) => {
+                                        if (e.mesa == 9) {
+                                            return (
+                                                <Draggable type="invitado" data={e.id}> <li className="list-group-item list-group-item-light"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                            )
+                                        }
+                                    })}
+
+                                </ul>
+                                </div>
+                                </div>
+                            </Droppable>
+                        </div>
+
                         <div className={styles.etiquetas}>
                             <div className="row">
                                 <div className="col l3">
                                     <p>Familia de la Novio</p>
-                                    <ul className="list-group ">
+                                    <ul className={styles.lista}>
                                         {this.state.familiaNovio.map((e, index) => {
                                             if (e.mesa == 0) {
                                                 return (
-                                                    <Draggable type="invitado" data={e.id}> <li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                                    <Draggable type="invitado" data={e.id}> <li className="list-group-item list-group-item-dark"><p>{e.nombre} {e.apellido}</p></li></Draggable>
                                                 )
                                             }
                                         })}
@@ -190,11 +292,11 @@ export class Mesas extends PureComponent {
                                 </div>
                                 <div className="col l3">
                                     <p>Familia del Novia</p>
-                                    <ul className="list-group">
+                                    <ul className={styles.lista}>
                                         {this.state.familiaNovia.map((e, index) => {
                                             if (e.mesa == 0) {
                                                 return (
-                                                    <Draggable type="invitado" data={e.id}> <li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                                    <Draggable type="invitado" data={e.id}> <li className="list-group-item list-group-item-secondary"><p>{e.nombre} {e.apellido}</p></li></Draggable>
 
                                                 )
                                             }
@@ -203,11 +305,11 @@ export class Mesas extends PureComponent {
                                 </div>
                                 <div className="col l3">
                                     <p>Amigas de la novio</p>
-                                    <ul className="list-group">
+                                    <ul className={styles.lista}>
                                         {this.state.amigosNovio.map((e, index) => {
                                             if (e.mesa == 0) {
                                                 return (
-                                                    <Draggable type="invitado" data={e.id}> <li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>
+                                                    <Draggable type="invitado" data={e.id}> <li className="list-group-item list-group-item-light"><p>{e.nombre} {e.apellido}</p></li></Draggable>
 
                                                 )
                                             }
@@ -216,12 +318,11 @@ export class Mesas extends PureComponent {
                                 </div>
                                 <div className="col l3">
                                     <p>Amigos del novia</p>
-                                    <ul className="list-group">
+                                    <ul className={styles.lista}>
                                         {this.state.amigosNovia.map((e, index) => {
                                             if (e.mesa == 0) {
                                                 return (
-                                                    <Draggable type="invitado" data={e.id}> <li className="list-group-item list-group-item-danger"><p>{e.nombre} {e.apellido}</p></li></Draggable>
-
+                                                    <Draggable type="invitado" data={e.id}> <li className="list-group-item list-group-item-primary"><p>{e.nombre} {e.apellido}</p></li></Draggable>
                                                 )
                                             }
                                         })}
