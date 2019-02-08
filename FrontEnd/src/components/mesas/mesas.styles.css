@@ -5,11 +5,15 @@
 p{
     font-size:10px;
 }
-.circle{ background-image:url('../../assets/img/madera.jpg'); width: 200px; height: 200px; border-radius: 80px;  }
-.circle div { position:relative; left: 19px; top: 19px; width: 90px; height: 90px; color: white;padding:20px;margin-top:10px; }
+.circle{  
+    background-color: green ;
+    min-height: 300px;
 
+}
+/* .circle div { } */
 
-
+/* background-image:url('../../assets/img/madera.jpg'); width: 300px; height: 300px; border-radius: 80px;
+position:relative; left: 19px; top: 19px; width: 90px; height: 90px; color: white;padding:20px;margin-top:10px;  */
 
 .etiquetas{
     /* background-color: grey; */
@@ -20,6 +24,7 @@ h5{
     font-weight: 300;
 }
 
-Droppable{
-    background-color: blue;
+.lista li{
+    width: 200px;
+    background-color: green;
 }
