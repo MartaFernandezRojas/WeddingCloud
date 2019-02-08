@@ -52,7 +52,8 @@ app.get('/invitados/getMofificar', ProjectControllerinvitados.getInvitadosModifi
 app.post('/invitados/post', ProjectControllerinvitados.postInvitados);
 app.post('/invitados/delete', ProjectControllerinvitados.deleteInvitados);
 app.post('/invitados/update', ProjectControllerinvitados.invitadoUpdate);
-
+app.post('/invitados/updateMesa', ProjectControllerinvitados.invitadoUpdateMesa);
+app.post('/invitados/avatar', multipartMiddleware, ProjectControllerinvitados.avatar);
 app.post('/log/logIn', ProjectControllerLogin.loginUser);
 
 

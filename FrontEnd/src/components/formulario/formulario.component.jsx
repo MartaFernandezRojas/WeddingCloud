@@ -26,22 +26,20 @@ export class Formulario extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
   }
-  show() {
-    // console.log(this.state);
-  }
 
   handleChange(event) {
     this.setState({
       [event.target.id]: event.target.value
     });
+    
   }
   insertUser() {
-
+  
     axios.post('http://localhost:3000/invitados/post', this.state)
       .then(response => {
-
+        console.log(response);
       })
-
+      
   }
   render() {
     return (

@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { Store } from '@Models';
 // Import global resources
 import { cloud } from '../../assets';
-import { Text, Galeria, Formulario, LogIn, FormularioConfirmacion, ResultadoInvitado, GestionInvitados, Mesas } from '../../components';
+import { Text, Galeria, Formulario, LogIn, FormularioConfirmacion, ResultadoInvitado, GestionInvitados, Mesas, Listas } from '../../components';
 import { Switch, Route, Link, BrowserRouter, Redirect } from 'react-router-dom';
 
 // Import local resources

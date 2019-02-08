@@ -18,12 +18,12 @@ export class FormularioConfirmacion extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      confirmacion: null,
-      id_alergia: null,
-      parte: null,
-      familia: null,
-      fiestapreboda: null,
-      comentarios: 'Escribe lo que quieras'
+      confirmacion: '',
+      id_alergia: '',
+      parte: '',
+      familia: '',
+      fiestapreboda: '',
+      comentarios: ' '
     };
     this.handleChange = this.handleChange.bind(this);
   }

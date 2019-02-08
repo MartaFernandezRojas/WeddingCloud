@@ -2,9 +2,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { MDBDataTable } from 'mdbreact';
-
+import { Pie } from "react-chartjs-2";
 import styles from './gestionInvitados.styles.css';
-
+import { MDBContainer } from "mdbreact";
 import { Navbar } from '@Components'
 //Import Stilos
 
@@ -14,7 +14,31 @@ export class GestionInvitados extends Component {
 
   state = {
     nombre: '',
-    invitados: []
+    invitados: [],
+    dataPie: {
+      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+      datasets: [
+        {
+          data: [300, 50, 100, 40, 120, 24, 52],
+          backgroundColor: [
+            "#F7464A",
+            "#46BFBD",
+            "#FDB45C",
+            "#949FB1",
+            "#4D5360",
+            "#ac64ad"
+          ],
+          hoverBackgroundColor: [
+            "#FF5A5E",
+            "#5AD3D1",
+            "#FFC870",
+            "#A8B3C5",
+            "#616774",
+            "#da92db"
+          ]
+        }
+      ]
+    }
   };
 
 
@@ -31,6 +55,12 @@ export class GestionInvitados extends Component {
 
     const data = {
       columns: [
+        {
+          label: 'ID',
+          field: 'ID',
+          sort: 'asc',
+          width: 150
+        },
         {
           label: 'Nombre',
           field: 'Nombre',
@@ -76,6 +106,12 @@ export class GestionInvitados extends Component {
         {
           label: 'Fiesta preboda',
           field: 'Fiesta preboda',
+          sort: 'asc',
+          width: 100
+        },
+        {
+          label: 'Mesa Asignada',
+          field: 'Mesa Asignada',
           sort: 'asc',
           width: 100
         },

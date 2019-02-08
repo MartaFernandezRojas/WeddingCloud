@@ -10,3 +10,4 @@ export * from './navbar';
 export * from './navbarInvitados';
 export * from './cardInvitado';
 export * from './mesas';
+export * from './listas';
