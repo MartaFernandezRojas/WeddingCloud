@@ -10,4 +10,6 @@ export * from './navbar';
 export * from './navbarInvitados';
 export * from './cardInvitado';
 export * from './mesas';
-export * from './listas';
+export * from './paginaInicio';
+export * from './paginaRegisLog';
+export * from './navbarInicio';

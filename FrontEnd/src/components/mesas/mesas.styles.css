@@ -10,6 +10,11 @@ p{
     min-height: 250px;
     max-width: 300px;
     border-radius: 80px;
+    display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 20px;
 }
 /* .circle div { } */
 
@@ -31,5 +36,4 @@ h5{
     align-content: center;
     list-style: none;
     margin-bottom: 5px;
- 
 }

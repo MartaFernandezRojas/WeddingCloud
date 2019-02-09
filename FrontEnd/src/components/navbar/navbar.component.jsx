@@ -1,12 +1,16 @@
 // Import libraries
 import React, { Component } from 'react';
 import axios from 'axios';
+import Style from './navbar.css';
 import {
     MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBDropdown,
     MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon
 } from "mdbreact";
 
+
+
 import { cloud } from '../../assets';
+import { style } from 'react-toastify';
 
 export class Navbar extends Component {
     state = {
@@ -19,7 +23,8 @@ export class Navbar extends Component {
 
     render() {
         return (
-            <MDBNavbar color="#90caf9 blue lighten-3" dark expand="md">
+            <div className={Style.navbar}>
+            <MDBNavbar color="#90caf9" dark expand="md">
                 <MDBNavbarBrand>
                 <img src={cloud} style={{width:"12%"}}/>
                 </MDBNavbarBrand>
@@ -76,6 +81,7 @@ export class Navbar extends Component {
                     </MDBNavbarNav>
                 </MDBCollapse>
             </MDBNavbar>
+            </div>
         );
     }
 }

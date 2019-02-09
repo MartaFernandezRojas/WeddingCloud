@@ -1,4 +1,3 @@
-import { cloud } from '../../assets';
 // Import libraries
 import React, { Component } from 'react';
 import axios from 'axios';
@@ -6,10 +5,12 @@ import {
     MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBDropdown,
     MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon
 } from "mdbreact";
-import Style from './navbarInvitados.css';
+import Style from './navbarInicio.css';
+import { cloud } from '../../assets';
 import { style } from 'react-toastify';
+import { PaginaResgisLog} from '@Components';
 
-export class NavbarInvitados extends Component {
+export class NavbarInicio extends Component {
     state = {
         isOpen: false
     };
@@ -21,21 +22,15 @@ export class NavbarInvitados extends Component {
     render() {
         return (
             <div className={Style.navbar}>
-            <MDBNavbar color="#90caf9 lighten-3" dark expand="md">
+            <MDBNavbar className="navbar-fixed" dark expand="md">
                 <MDBNavbarBrand>
                 <img src={cloud} style={{width:"12%"}}/>
                 </MDBNavbarBrand>
                 <MDBNavbarToggler onClick={this.toggleCollapse} />
-                <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
-                    <MDBNavbarNav left>
-                        <MDBNavItem right>
-                            <MDBNavLink to="#!">Mensajeria</MDBNavLink>
-                        </MDBNavItem>
-                        <MDBNavItem active right>
-                            <MDBNavLink to="/FormularioConfirmacion">Confirmacion</MDBNavLink>
-                        </MDBNavItem>
-                        {/* <MDBNavItem>
-                            <MDBDropdown>
+                <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar > 
+                    <MDBNavbarNav right>
+                        <MDBNavItem>
+                            {/* <MDBDropdown>
                                 <MDBDropdownToggle nav caret>
                                     <div className="d-none d-md-inline">Dropdown</div>
                                 </MDBDropdownToggle>
@@ -45,11 +40,11 @@ export class NavbarInvitados extends Component {
                                     <MDBDropdownItem href="#!">Something else here</MDBDropdownItem>
                                     <MDBDropdownItem href="#!">Something else here</MDBDropdownItem>
                                 </MDBDropdownMenu>
-                            </MDBDropdown>
+                            </MDBDropdown> */}
                         </MDBNavItem>
                     </MDBNavbarNav>
                     <MDBNavbarNav right>
-                        <MDBNavItem>
+                        {/* <MDBNavItem>
                             <MDBNavLink className="waves-effect waves-light" to="#!">
                                 <MDBIcon fab icon="twitter" />
                             </MDBNavLink>
@@ -65,10 +60,7 @@ export class NavbarInvitados extends Component {
                                     <MDBIcon icon="user" />
                                 </MDBDropdownToggle>
                                 <MDBDropdownMenu className="dropdown-default" right>
-                                    {/* <MDBDropdownItem href="#!">Action</MDBDropdownItem>
-                                    <MDBDropdownItem href="#!">Another Action</MDBDropdownItem>
-                                    <MDBDropdownItem href="#!">Something else here</MDBDropdownItem>
-                                    <MDBDropdownItem href="#!">Something else here</MDBDropdownItem> */}
+                                 <PaginaResgisLog/>
                                 </MDBDropdownMenu>
                             </MDBDropdown>
                         </MDBNavItem>
