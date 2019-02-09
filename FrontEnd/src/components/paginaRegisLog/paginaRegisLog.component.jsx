@@ -1,7 +1,7 @@
 // Import libraries
 import React, { Component } from 'react';
 import axios from 'axios';
-import Styles  from './paginaRegisLog.css';
+import Styles from './paginaRegisLog.css';
 
 import { cloud } from '../../assets';
 import { Formulario, LogIn } from '@Components';
@@ -12,18 +12,35 @@ import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalF
 ///////////// Component ////////////////
 export class PaginaResgisLog extends Component {
 
+    state = {
+        logIn: true
+    }
+
+    change=()=>{
+       
+        this.setState({ logIn: !this.state.logIn });
+        console.log(this.state.logIn)
+    }
+    
     render() {
+        
         return (
             <div className={Styles.container}>
-                <img src={cloud} className={Styles.image}/>
+                <img src={cloud} className={Styles.image} />
                 <div className={Styles.title}>Wedding Cloud</div>
                 <div className="row">
-                    <div className="col-l6 mx-5">
-                        <Formulario />
-                    </div>
-                    <div className="col-l6 mx-5">
+                    {this.state.logIn ?
+
+                        <div className="col-l6 mx-5">
+                            <Formulario />
+                            <a onClick={this.change}>LogIn</a>
+                        </div>
+                        :    <div className="col-l6 mx-5">
                         <LogIn />
-                    </div>
+                        <a onClick={this.change}>Registrarse</a>
+                    </div>}
+
+                 
                 </div>
             </div>
         )

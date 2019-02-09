@@ -37,6 +37,9 @@ export class Navbar extends Component {
                             <MDBNavItem >
                                 <MDBNavLink to="/mesas">Mesas</MDBNavLink>
                             </MDBNavItem>
+                            <MDBNavItem >
+                                <MDBNavLink to="/FormularioConfirmacionAdmin">Perfil</MDBNavLink>
+                            </MDBNavItem>
                             <MDBNavItem>
                                 <MDBDropdown>
                                     <MDBDropdownToggle nav caret>

@@ -1,6 +1,7 @@
 // Import libraries
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Switch, Redirect, BrowserRouter, } from 'react-router-dom';
 import { ResultadoInvitado } from '../resultadoInvitado/resultadoInvitado.component'
 import styles from '../../routes/router/router.styles.css';
 import stylesform from './formulario.styles.css';
@@ -22,7 +23,9 @@ export class Formulario extends Component {
       apellido: '',
       email: '',
       password: '',
-      rol: 0
+      rol: 0,
+      redirect: false,
+      redirect2: false
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -31,17 +34,45 @@ export class Formulario extends Component {
     this.setState({
       [event.target.id]: event.target.value
     });
-    
+
   }
   insertUser() {
-  
+
     axios.post('http://localhost:3000/invitados/post', this.state)
       .then(response => {
-        console.log(response);
+        
+        if (response.data.rol == 1 || response.data.rol == 0) {
+          
+          let user = {
+            email: this.state.email,
+            password: this.state.password
+          }
+          axios.post('http://localhost:3000/log/logIn', user)
+            .then(response => {
+                console.log('hola')
+              if (response.status === 200) {
+                if (response.data.rol == 0) {
+                  localStorage.setItem('invitado', JSON.stringify(response.data));
+                  this.setState({ redirect: true })
+                }
+                else if (response.data.rol == 1) {
+                  localStorage.setItem('invitado', JSON.stringify(response.data));
+                  this.setState({ redirect2: true })
+                } else {
+                  // this.setState({
+                  //     modal: !this.state.modal
+                  // });
+                }
+              }
+
+            })
+        }
       })
-      
+
   }
   render() {
+    const redireccion = this.state.redirect ? <Redirect from="/" to="/FormularioConfirmacion" /> : null
+    const redireccion2 = this.state.redirect2 ? <Redirect from="/" to="/gestionInvitados" /> : null
     return (
       <div>
         <h5>Registro de Invitado</h5>
@@ -63,6 +94,8 @@ export class Formulario extends Component {
           }
           } className={styles.button} value='Confirmar' />
         </form>
+        {redireccion}
+        {redireccion2}
       </div>
     );
   }

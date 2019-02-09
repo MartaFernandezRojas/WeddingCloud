@@ -4,6 +4,7 @@ export * from './galeria';
 export * from './formulario';
 export * from './logIn';
 export * from './formConfirmacion';
+export * from './formConfirmacionAdmin';
 export * from './resultadoInvitado';
 export * from './gestionInvitados';
 export * from './navbar';

@@ -7,6 +7,8 @@ import styles from '../../routes/router/router.styles.css';
 import { Switch, Redirect, BrowserRouter, } from 'react-router-dom';
 import stylesform from './login.css';
 import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter } from 'mdbreact';
+import { style } from 'react-toastify';
+
 ///////////// Component ////////////////
 export class LogIn extends Component {
     constructor(props) {
@@ -26,16 +28,21 @@ export class LogIn extends Component {
             [event.target.id]: event.target.value
         });
     }
+    toggle = () => {
+        this.setState({
+            modal: !this.state.modal
+        });
+    }
     logInUser() {
         let user = {
             email: this.state.emailregistro,
             password: this.state.passwordregistro
-           
+
         }
-        console.log(user);
+       
         axios.post('http://localhost:3000/log/logIn', user)
             .then(response => {
-                console.log(response);
+               
                 if (response.status === 200) {
                     if (response.data.rol == 0) {
                         localStorage.setItem('invitado', JSON.stringify(response.data));
@@ -45,8 +52,10 @@ export class LogIn extends Component {
                         localStorage.setItem('invitado', JSON.stringify(response.data));
                         this.setState({ redirect2: true })
                     } else {
+                        this.setState({
+                            modal: !this.state.modal
+                        });
                        
-                        console.log('problem')
                     }
                 }
 
@@ -57,8 +66,6 @@ export class LogIn extends Component {
         const redireccion2 = this.state.redirect2 ? <Redirect from="/" to="/gestionInvitados" /> : null
         return (
             <div>
-                
-         
                 <h5>Log In</h5>
                 <form >
                     <label form="email">Email:</label>
@@ -69,10 +76,22 @@ export class LogIn extends Component {
                         this.logInUser();
                     }
                     } className={styles.button} value='Confirmar' />
-
                 </form>
-                {redireccion}
+                  {redireccion}
                 {redireccion2}
+                <MDBContainer className={stylesform.modals}>
+                    <MDBModal isOpen={this.state.modal}>
+                        <MDBModalHeader >MDBModal title</MDBModalHeader>
+                        <MDBModalBody>
+                            Revisa tu email y tu password
+                            </MDBModalBody>
+                        <MDBModalFooter>
+                            <MDBBtn color="secondary" onClick={this.toggle}>Close</MDBBtn>
+                        </MDBModalFooter>
+                    </MDBModal>
+                </MDBContainer>
+
+              
             </div>
         );
     }
