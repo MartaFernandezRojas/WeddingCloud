@@ -33,6 +33,14 @@ var controller = {
             };
         });
     
+    },
+    logoutUser: function(req, res){
+        if(req.session.user){
+            req.session.destroy();
+            return res.send('ok');
+        }else{
+            return res.send('No existe un login de usuario')
+        }
     }
 };
 

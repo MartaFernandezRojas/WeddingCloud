@@ -13,3 +13,4 @@ export * from './mesas';
 export * from './paginaInicio';
 export * from './paginaRegisLog';
 export * from './navbarInicio';
+export * from './logOut';

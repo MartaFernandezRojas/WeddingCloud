@@ -55,6 +55,7 @@ app.post('/invitados/update', ProjectControllerinvitados.invitadoUpdate);
 app.post('/invitados/updateMesa', ProjectControllerinvitados.invitadoUpdateMesa);
 // app.post('/invitados/avatar', multipartMiddleware, ProjectControllerinvitados.avatar);
 app.post('/log/logIn', ProjectControllerLogin.loginUser);
+app.get('/log/logOut', ProjectControllerLogin.logoutUser);
 
 
 app.get('/admin/preboda', ProjectControllerAdmin.getPreboda);
