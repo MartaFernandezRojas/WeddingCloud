@@ -24,11 +24,13 @@ export class PaginaInicio extends Component {
                         <section className={style2.bloque2}>
                             <div className="row">
                                 <div className="col l12">
+                          
                                     <h2>Servicios de Weddding Cloud</h2>
                                 </div>
                             </div>
                             <div className={style2.informacion}>
                                 <div className="row">
+                              
                                     <div className="col l3 m6">
                                         <MDBView hover>
                                             <img className="img-fluid" src={panelcontrol}></img>
@@ -61,7 +63,9 @@ export class PaginaInicio extends Component {
                                             </MDBMask>
                                         </MDBView>
                                     </div>
+                                   
                                 </div>
+                                
                             </div>
                         </section>
                         <section className={style2.bloque3}>
