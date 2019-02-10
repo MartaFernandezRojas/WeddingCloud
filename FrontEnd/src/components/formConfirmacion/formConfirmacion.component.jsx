@@ -23,7 +23,9 @@ export class FormularioConfirmacion extends Component {
       parte: '',
       familia: '',
       fiestapreboda: '',
-      comentarios: ' '
+      comentarios: ' ',
+      novio1:'',
+      novio2:''
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -46,6 +48,7 @@ export class FormularioConfirmacion extends Component {
       familia: this.state.familia,
       fiestapreboda: this.state.fiestapreboda,
       comentarios: this.state.comentarios
+      
     }
     axios.post('http://localhost:3000/invitados/update', user)
       .then(response => {
@@ -58,7 +61,6 @@ export class FormularioConfirmacion extends Component {
       [event.target.id]: event.target.value
 
     });
-    console.log(event.target.value);
   }
   componentDidMount() {
     var invitado = JSON.parse(localStorage.getItem("invitado"));
@@ -68,6 +70,13 @@ export class FormularioConfirmacion extends Component {
         this.setState(response.data[0])
 
       })
+      axios.get('http://localhost:3000/boda/novios', { params: { idb: invitado.id_boda } })
+      .then(response => {
+        this.setState({novio1:response.data[0].novio1})
+        this.setState({novio2:response.data[0].novio2})
+      })
+      
+
   }
   render() {
     return (
@@ -105,12 +114,12 @@ export class FormularioConfirmacion extends Component {
                 </div>
                 <p>Vienes de parte de:</p>
                 <div className="form-check">
-                  <input className="form-check-input validate" id="parte" type="radio" name="parte" checked={this.state.parte === 'Novia'} value='Novia' onChange={this.handleChange} />
-                  <label className={styles2.label} for="Si puedo">Novia</label>
+                  <input className="form-check-input validate" id="parte" type="radio" name="parte" checked={this.state.parte === this.state.novio1} value={this.state.novio1} onChange={this.handleChange} />
+                  <label className={styles2.label} for="Si puedo">{this.state.novio1}</label>
                 </div>
                 <div className="form-check">
-                  <input className="form-check-input validate" id="parte" type="radio" name="parte" checked={this.state.parte === 'Novio'} value='Novio' onChange={this.handleChange} />
-                  <label className={styles2.label} for="Si puedo">Novio</label>
+                  <input className="form-check-input validate" id="parte" type="radio" name="parte" checked={this.state.parte === this.state.novio2} value={this.state.novio2} onChange={this.handleChange} />
+                  <label className={styles2.label} for="Si puedo">{this.state.novio2}</label>
                 </div>
                 <p>Familia o Amigo</p>
                 <div className="form-check">

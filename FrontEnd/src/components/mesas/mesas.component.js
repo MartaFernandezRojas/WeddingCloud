@@ -18,7 +18,9 @@ export class Mesas extends PureComponent {
         amigosNovio: [],
         amigosNovia: [],
         mesa: 0,
-        id: null
+        id: null,
+        novio1: '',
+        novio2: ''
 
     };
 
@@ -34,22 +36,26 @@ export class Mesas extends PureComponent {
             .then(response => {
                 this.setState({ invitados: response.data })
             })
-
-        axios.get('http://localhost:3000/admin/noviofamilia', { params: { idb: invitado.id_boda } })
+        axios.get('http://localhost:3000/boda/novios', { params: { idb: invitado.id_boda } })
             .then(response => {
-                this.setState({ familiaNovio: response.data })
-            })
-        axios.get('http://localhost:3000/admin/noviafamilia', { params: { idb: invitado.id_boda } })
-            .then(response => {
-                this.setState({ familiaNovia: response.data })
-            })
-        axios.get('http://localhost:3000/admin/novioAmigos', { params: { idb: invitado.id_boda } })
-            .then(response => {
-                this.setState({ amigosNovio: response.data })
-            })
-        axios.get('http://localhost:3000/admin/noviaAmigos', { params: { idb: invitado.id_boda } })
-            .then(response => {
-                this.setState({ amigosNovia: response.data })
+                this.setState({ novio1: response.data[0].novio1 })
+                this.setState({ novio2: response.data[0].novio2 })
+                axios.get('http://localhost:3000/admin/noviofamilia', { params: { parte1: this.state.novio1, idb: invitado.id_boda } })
+                    .then(response => {
+                        this.setState({ familiaNovio: response.data })
+                    })
+                axios.get('http://localhost:3000/admin/noviafamilia', { params: { parte2: this.state.novio2, idb: invitado.id_boda } })
+                    .then(response => {
+                        this.setState({ familiaNovia: response.data })
+                    })
+                axios.get('http://localhost:3000/admin/novioAmigos', { params: { parte1: this.state.novio1, idb: invitado.id_boda } })
+                    .then(response => {
+                        this.setState({ amigosNovio: response.data })
+                    })
+                axios.get('http://localhost:3000/admin/noviaAmigos', { params: { parte2: this.state.novio2, idb: invitado.id_boda } })
+                    .then(response => {
+                        this.setState({ amigosNovia: response.data })
+                    })
             })
     }
 
@@ -376,7 +382,7 @@ export class Mesas extends PureComponent {
                         <div className={styles.etiquetas}>
                             <div className="row">
                                 <div className="col l3">
-                                    <p>Familia de la Novio</p>
+                                    <p>Familia de {this.state.novio1}</p>
                                     <ul className={styles.lista}>
                                         {this.state.familiaNovio.map((e, index) => {
                                             if (e.mesa == 0 && e.id_alergia != 'null') {
@@ -393,7 +399,7 @@ export class Mesas extends PureComponent {
                                     </ul>
                                 </div>
                                 <div className="col l3">
-                                    <p>Familia del Novia</p>
+                                    <p>Familia {this.state.novio2}</p>
                                     <ul className={styles.lista}>
                                         {this.state.familiaNovia.map((e, index) => {
                                             if (e.mesa == 0 && e.id_alergia != 'null') {
@@ -411,7 +417,7 @@ export class Mesas extends PureComponent {
                                     </ul>
                                 </div>
                                 <div className="col l3">
-                                    <p>Amigas de la novio</p>
+                                    <p>Amigos de {this.state.novio1}</p>
                                     <ul className={styles.lista}>
                                         {this.state.amigosNovio.map((e, index) => {
                                             if (e.mesa == 0 && e.id_alergia != 'null') {
@@ -428,7 +434,7 @@ export class Mesas extends PureComponent {
                                     </ul>
                                 </div>
                                 <div className="col l3">
-                                    <p>Amigos del novia</p>
+                                    <p>Amigos de {this.state.novio2}</p>
                                     <ul className={styles.lista}>
                                         {this.state.amigosNovia.map((e, index) => {
                                             if (e.mesa == 0 && e.id_alergia != 'null') {

@@ -2,9 +2,6 @@ var con = require('../config');
 var bcrypt = require('bcrypt-nodejs');
 
 var controller = {
-
-
-
     clienteAdd: function (req, res) {
         let password = req.body.password;
         bcrypt.genSalt(10, function (err, salt) {

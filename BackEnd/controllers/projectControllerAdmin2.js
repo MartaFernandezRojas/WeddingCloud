@@ -33,7 +33,7 @@ var controller = {
         });
     },
     getNovioFamilia: function (req, res) {
-        let sql = `select * from invitados where parte='Novio' and familia ='Familia' AND id_boda = ${req.query.idb}`;
+        let sql = `select * from invitados where parte='${req.query.parte1}' and familia ='Familia' AND id_boda = ${req.query.idb}`;
         con.query(sql, function (err, result) {
             if (err) {
                 return res.send(err);
@@ -43,7 +43,7 @@ var controller = {
         });
     },
     getNoviaFamilia: function (req, res) {
-        let sql = `select * from invitados where parte='Novia' and familia ='Familia' AND id_boda = ${req.query.idb}`;
+        let sql = `select * from invitados where parte='${req.query.parte2}' and familia ='Familia' AND id_boda = ${req.query.idb}`;
         con.query(sql, function (err, result) {
             if (err) {
                 return res.send(err);
@@ -53,7 +53,7 @@ var controller = {
         });
     },
     getNovioAmigos: function (req, res) {
-        let sql = `select * from invitados where parte='Novio' and familia ='Amigo'AND id_boda = ${req.query.idb}`;
+        let sql = `select * from invitados where parte='${req.query.parte1}' and familia ='Amigo'AND id_boda = ${req.query.idb}`;
         con.query(sql, function (err, result) {
             if (err) {
                 return res.send(err);
@@ -63,7 +63,7 @@ var controller = {
         });
     },
     getNoviaAmigos: function (req, res) {
-        let sql = `select * from invitados where parte='Novia' and familia ='Amigo' AND id_boda = ${req.query.idb}`;
+        let sql = `select * from invitados where parte='${req.query.parte2}' and familia ='Amigo' AND id_boda = ${req.query.idb}`;
         con.query(sql, function (err, result) {
             if (err) {
                 return res.send(err);

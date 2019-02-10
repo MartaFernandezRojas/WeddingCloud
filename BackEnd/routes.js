@@ -5,7 +5,7 @@ var ProjectControllerForm = require('./controllers/projectControllerForm');
 var ProjectControllerAdmin = require('./controllers/projectControllerAdmin');
 var ProjectControllerExample = require('./controllers/projectControllerExample');
 var ProjectControllerLogin= require('./controllers/ProjectControllerLogIn');
-
+var ProjectControllerBodas= require('./controllers/ProjectControllerBoda');
 
 ////////// CONTROLERS WEDDINGCLOUD//////
 
@@ -57,6 +57,8 @@ app.post('/invitados/updateMesa', ProjectControllerinvitados.invitadoUpdateMesa)
 app.post('/log/logIn', ProjectControllerLogin.loginUser);
 app.get('/log/logOut', ProjectControllerLogin.logoutUser);
 
+app.post('/boda', ProjectControllerBodas.postBoda);
+app.get('/boda/novios', ProjectControllerBodas.getNovios);
 
 app.get('/admin/preboda', ProjectControllerAdmin.getPreboda);
 app.get('/admin/confirmados', ProjectControllerAdmin.getConfirmados);

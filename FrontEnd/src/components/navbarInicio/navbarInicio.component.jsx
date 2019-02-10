@@ -22,9 +22,9 @@ export class NavbarInicio extends Component {
     render() {
         return (
             <div className={Style.navbar}>
-            <MDBNavbar className="navbar-fixed" dark expand="md">
+            <MDBNavbar className="navbar-fixed z-depth-1-half" dark expand="md">
                 <MDBNavbarBrand>
-                <img src={cloud} style={{width:"12%"}}/>
+                <img src={cloud} style={{width:"8%"}}/>
                 </MDBNavbarBrand>
                 <MDBNavbarToggler onClick={this.toggleCollapse} />
                 <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar > 

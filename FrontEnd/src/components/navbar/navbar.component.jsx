@@ -23,7 +23,7 @@ export class Navbar extends Component {
             <div className={Style.navbar}>
                 <MDBNavbar color="#90caf9" dark expand="md">
                     <MDBNavbarBrand>
-                        <img src={cloud} style={{ width: "12%" }} />
+                        <img src={cloud} style={{ width: "8%" }} />
                     </MDBNavbarBrand>
                     <MDBNavbarToggler onClick={this.toggleCollapse} />
                     <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar >

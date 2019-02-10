@@ -15,3 +15,4 @@ export * from './paginaInicio';
 export * from './paginaRegisLog';
 export * from './navbarInicio';
 export * from './logOut';
+export * from './boda';
