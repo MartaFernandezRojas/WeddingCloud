@@ -16,3 +16,4 @@ export * from './paginaRegisLog';
 export * from './navbarInicio';
 export * from './logOut';
 export * from './boda';
+export * from './footer';

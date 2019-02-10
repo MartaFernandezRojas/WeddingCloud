@@ -88,7 +88,7 @@ export class Boda extends Component {
                     <input className="form-control validate" id="email" type="email" name="Email" placeholder="Email" value={this.state.email} onChange={this.handleChange} />
                     <label form="password">Passsword:</label>
                     <input className="form-control" id="password" type="password" name="Password" placeholder="Password" value={this.state.password} onChange={this.handleChange} />
-                    <label form="apellido">Nombre Novi@ 2:</label>
+                    <label form="apellido">Nombre Novi@:</label>
                     <input className="form-control" id="novio2" type="text" name="novio2" placeholder="Nombre de un novi@" value={this.state.novio2} onChange={this.handleChange} />
                     <input type='button' onClick={() => {
                         this.crear();

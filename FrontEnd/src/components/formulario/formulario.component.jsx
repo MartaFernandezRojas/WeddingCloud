@@ -5,6 +5,7 @@ import { Switch, Redirect, BrowserRouter, } from 'react-router-dom';
 import { ResultadoInvitado } from '../resultadoInvitado/resultadoInvitado.component'
 import styles from '../../routes/router/router.styles.css';
 import stylesform from './formulario.styles.css';
+import { style } from 'react-toastify';
 // Import global resources
 
 // Import local resources
@@ -74,7 +75,7 @@ export class Formulario extends Component {
     const redireccion = this.state.redirect ? <Redirect from="/" to="/FormularioConfirmacion" /> : null
     const redireccion2 = this.state.redirect2 ? <Redirect from="/" to="/gestionInvitados" /> : null
     return (
-      <div>
+      <div className={stylesform.container}>
         <h5>Registro de Invitado</h5>
         <form >
           <label >ID Boda:</label>

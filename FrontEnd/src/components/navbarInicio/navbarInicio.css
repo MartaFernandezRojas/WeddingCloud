@@ -3,7 +3,6 @@
 }
 
 .navbar{
-    background: linear-gradient(to bottom, #808c94, rgb(102, 119, 111));
-    /* background-color: #688197; */
+    background:rgb(54, 78, 94);
     color:black;
 }

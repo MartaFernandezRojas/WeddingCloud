@@ -28,7 +28,7 @@ export class PaginaResgisLog extends Component {
             <div className={Styles.container}>
                 <img src={cloud} className={Styles.image} />
                 <div className={Styles.title}>Wedding Cloud</div>
-                <div className="row">
+               
                     {this.state.logIn ?
 
                         <div className="col-l6 mx-5">
@@ -40,8 +40,7 @@ export class PaginaResgisLog extends Component {
                         <a onClick={this.change}>Registrarse</a>
                     </div>}
 
-                 
-                </div>
+               
             </div>
         )
     }

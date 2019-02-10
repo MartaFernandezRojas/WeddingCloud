@@ -2,9 +2,9 @@
     background-color: green;
 }
 
-.img{
-    
-} 
+.title{
+  
+}
 
 h2{
   color:gray;
@@ -22,7 +22,8 @@ h2{
     position: relative;
     height:900px ;
     background-size: cover;
-    background-image: url('../../assets/img/inicio.jpg');
+    filter: grayscale(40%);	
+    background-image: url('../../assets/img/portada4.jpg');
 }
 
 .bloque2{
@@ -44,8 +45,13 @@ h2{
     padding:0;
     position: relative;
     height:900px ;
+      filter: grayscale(40%);
     background-size: cover;
-    background-image: url('../../assets/img/boda2.jpg')
+    background-image: url('../../assets/img/baile.png')
+}
+
+.bloque4{
+  margin-top:-50px;
 }
 
 *{
@@ -147,13 +153,23 @@ h2{
 
 @media screen and (max-width: 600px) {
     .bloque1{
-        max-width:100%;
-       
-        background-image: url('../../assets/img/paginaInicio.jpg');
+      background-size:cover;
+      background-position:center;
+      background-repeat: no-repeat;
+      height: 600px;
     }
     
     .bloque2{
-    
+      background-size:cover;
+      background-position:center;
+      background-repeat: no-repeat;
+      height: 600px;
        
+    }
+    .bloque3{
+      background-size:cover;
+      background-position:center;
+      background-repeat: no-repeat;
+      height: 600px;
     }
   }

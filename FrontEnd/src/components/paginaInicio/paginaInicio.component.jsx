@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import { paginaInicio, paginaInicio2 } from '../../assets';
 import { FormularioConfirmacion } from '../formConfirmacion';
-import { NavbarInicio, Boda } from '@Components'
+import { NavbarInicio, Boda, Footer } from '@Components'
 import style2 from './paginaInicio.css';
 import { invitados, publicaciones, panelcontrol, mesas } from '../../assets';
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol, MDBMask, MDBView } from 'mdbreact';
@@ -65,10 +65,18 @@ export class PaginaInicio extends Component {
                             </div>
                         </section>
                         <section className={style2.bloque3}>
+                        <p className={style2.title}>Crea tu boda</p>
                             <Boda />
+                           
                         </section>
+                        <section className={style2.bloque4}>
+                        <Footer/>
+                           
+                        </section>
+                       
                     </div>
                 </div>
+               
             </div >
         );
     }
