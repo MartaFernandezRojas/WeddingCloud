@@ -81,7 +81,8 @@ export class FormularioConfirmacionAdmin extends Component {
         <Navbar />
         <div className="container">
           <h4>Bienvenid@ {this.state.nombre} {this.state.apellido}</h4>
-          <h5>Rellena el formulario de confirmación</h5>
+          <h4> Boda de {this.state.novio1} y {this.state.novio2} con ID:{this.state.id_boda}</h4>
+          <h6>Rellena el formulario de confirmación</h6>
           <div className="row">
             <div className="col l6 mx-5">
               <form >

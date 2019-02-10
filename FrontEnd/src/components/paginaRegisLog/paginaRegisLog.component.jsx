@@ -40,7 +40,6 @@ export class PaginaResgisLog extends Component {
                         <a onClick={this.change}>Registrarse</a>
                     </div>}
 
-               
             </div>
         )
     }

@@ -88,8 +88,6 @@ export class Formulario extends Component {
           <input className="form-control validate" id="email" type="email" name="Email" placeholder="Email" value={this.state.email} onChange={this.handleChange} />
           <label form="password">Passsword:</label>
           <input className="form-control" id="password" type="password" name="Password" placeholder="Password" value={this.state.password} onChange={this.handleChange} />
-          <label form="password">Rol:</label>
-          <input className="form-control" id="rol" type="rol" name="rol" placeholder="rol" value={this.state.rol} onChange={this.handleChange} />
           <input type='button' onClick={() => {
             this.insertUser();
           }

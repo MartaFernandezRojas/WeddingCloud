@@ -9,7 +9,7 @@ p{
     background-image:url('../../assets/img/madera.jpg');
     min-height: 350px;
     min-width: 100px;
-    border-radius: 80px;
+    border-radius: 200px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -19,43 +19,56 @@ p{
 
 .circlePres{  
     background-image:url('../../assets/img/madera.jpg');
-    height: 200px;
+    min-height: 200px;
     width: 500px;
+    min-width:300px ;
     border-radius: 80px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    align-content: center;
+    margin:auto;
     margin-bottom: 20px;
+    
+    /* margin-left: 500px; */
 }
-/* .circle div { } */
-
-/* background-image:url('../../assets/img/madera.jpg'); width: 300px; height: 300px; border-radius: 80px;
-position:relative; left: 19px; top: 19px; width: 90px; height: 90px; color: white;padding:20px;margin-top:10px;  */
-
-.etiquetas{
-    /* background-color: grey; */
-}
-
 h5{
     color:white;
     font-weight: 300;
 }
 
 .lista li{
-    width: 120px;
+    width: 140px;
     height:30px ;
     align-content: center;
     list-style: none;
     margin-bottom: 5px;
+   
 }
 
 
 .listaPres li{
-    display: flex;
-    padding-right: 20px;
-    display: inline;
+    width: 140px;
+    height:30px ;
+    align-content: center;
     list-style: none;
     margin-bottom: 5px;
+    
+    
 }
+
+@media only screen and (max-width: 600px) {
+    .circlePres{  
+        background-image:url('../../assets/img/madera.jpg');
+        height: 200px;
+        width: 300px;
+        min-width:300px ;
+        border-radius: 80px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        margin-bottom: 20px;
+        margin:auto;
+    }
+  }

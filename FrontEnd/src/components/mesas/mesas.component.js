@@ -79,7 +79,7 @@ export class Mesas extends PureComponent {
                     <h1>Planificador de mesas de {this.state.nombre}</h1>
                     <div className="row">
                         <div className="col l12 s12">
-                            <div>
+                            
                                 <Droppable
                                     types={['invitado']} // <= allowed drop types
                                     onDrop={this.onDrop.bind(this, 99)}>
@@ -104,7 +104,7 @@ export class Mesas extends PureComponent {
                                     </div>
                                     </div>
                                 </Droppable>
-                            </div>
+                        
                         </div>
                     </div>
                     <div className="row">
